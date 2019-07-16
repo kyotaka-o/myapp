@@ -5,41 +5,43 @@
   border-radius: 10px;
   box-shadow: 4px 4px 4px gray;
   text-align: center;
+  background-color: #303649;
+  color: aliceblue;
   &__avater{
     margin: 10px auto;
     width: 150px;
-    border: 2px solid #999;
-    border-radius: 10px;
-    box-shadow: 4px 4px 4px gray;
     height: 150px;
-    //暫定
-    background: url(avater.jpg);
-    /* 画像を常に天地左右の中央に配置 */
-    background-position: center center;  
-    /* 画像をタイル状に繰り返し表示しない */
-    background-repeat: no-repeat;
-    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
-    background-attachment: fixed; 
-    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-    background-size: cover;
-    /* 背景画像が読み込まれる前に表示される背景のカラー */
+    border: 2px solid #999;
+    color: #999;
+    line-height: 150px;
+    border-radius: 75px;
+    box-shadow: 4px 4px 4px gray;
+    background-color: white;
+    &__image{
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+      opacity: 0.9;
+    }
   }
   &__log{
     padding: 15px 0;
-    &__in{
+    &__bottun{
       display:inline-block;
       width: 40%;
       border: 2px solid #999;
       border-radius: 5px;
       box-shadow: 4px 4px 4px gray;
+      background-color: white;
     }
-    &__out{
-      display:inline-block;
-      width: 40%;
-      border: 2px solid #999;
-      border-radius: 5px;
-      box-shadow: 4px 4px 4px gray;
-    }
+    // &__out{
+    //   display:inline-block;
+    //   width: 40%;
+    //   border: 2px solid #999;
+    //   border-radius: 5px;
+    //   box-shadow: 4px 4px 4px gray;
+    //   background-color: white;
+    // }
 
   }
 }
