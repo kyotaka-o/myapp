@@ -33,6 +33,12 @@
       border-radius: 5px;
       box-shadow: 4px 4px 4px gray;
       background-color: white;
+      &:hover{
+        background-color:rgba(175, 247, 213, 0.8);
+        width: 50%;
+        height:30px;
+        line-height: 30px;
+      }
     }
     // &__out{
     //   display:inline-block;

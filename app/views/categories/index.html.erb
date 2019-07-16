@@ -3,22 +3,22 @@
     <div class="stage">
       <div class="cube">
           <div class="front">
-            <a href="#">Ruby</a>
+            <%= link_to "#{@random_categories[0].name}", "#" %>
           </div>
           <div class="back">
-            <a href="#">Rails</a>
+            <%= link_to "#{@random_categories[1].name}", "#" %>
           </div>
           <div class="left">
-            <a href="#">HTML</a>
+            <%= link_to "#{@random_categories[2].name}", "#" %>
           </div>
           <div class="right">
-            <a href="#">CSS</a>
+            <%= link_to "#{@random_categories[3].name}", "#" %>
           </div>
           <div class="top">
-            <a href="#">Javascript</a>
+            <%= link_to "#{@random_categories[4].name}", "#" %>  
           </div>
           <div class="bottom">
-            <a href="#">jQuery</a>
+            <%= link_to "#{@random_categories[5].name}", "#" %>
           </div>
       </div>
   </div>
@@ -28,24 +28,11 @@
   <div class="contents__left">
     <div class="categories">
       <p>Categories</p>
-      <div class="category">
-        <a href="#">Ruby</a>
-      </div>
-      <div class="category">
-        <a href="#">Rails</a>
-      </div>
-      <div class="category">
-        <a href="#">HTML</a>
-      </div>
-      <div class="category">
-        <a href="#">CSS</a>
-      </div>
-      <div class="category">
-        <a href="#">Javascript</a>
-      </div>
-      <div class="category">
-        <a href="#">jQuery</a>
-      </div>
+      <% @categories.each do |category| %>   
+        <div class="category">
+          <%= link_to "#{category.name}", "#" %>
+        </div>
+      <% end %>  
     </div>
   </div>
 
