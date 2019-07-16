@@ -1,0 +1,47 @@
+.user{
+  width: 90%;
+  margin: 30px auto;
+  border: 2px solid #999;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px gray;
+  text-align: center;
+  background-color: #303649;
+  color: aliceblue;
+  &__avater{
+    margin: 10px auto;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #999;
+    color: #999;
+    line-height: 150px;
+    border-radius: 75px;
+    box-shadow: 4px 4px 4px gray;
+    background-color: white;
+    &__image{
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+      opacity: 0.9;
+    }
+  }
+  &__log{
+    padding: 15px 0;
+    &__bottun{
+      display:inline-block;
+      width: 40%;
+      border: 2px solid #999;
+      border-radius: 5px;
+      box-shadow: 4px 4px 4px gray;
+      background-color: white;
+    }
+    // &__out{
+    //   display:inline-block;
+    //   width: 40%;
+    //   border: 2px solid #999;
+    //   border-radius: 5px;
+    //   box-shadow: 4px 4px 4px gray;
+    //   background-color: white;
+    // }
+
+  }
+}
