@@ -1,0 +1,6 @@
+<%= form_with model: post  do |form| %>
+  <%= form.text_field :title ,placeholder:"タイトル"%>
+  <%= form.text_area :body,placeholder:"内容"%>
+  <%= form.text_field :category_id ,value:13 %>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,14 @@
+<div class="theme">
+  <p>Solve Error DateBase(仮)</p>
+    <div class="stage">
+      <div class="cube">
+        <% i = 0 %>  
+        <% cube_elements.each do |element| %> 
+          <div class="<%= element %>" >
+            <%= link_to "#{random_categories[i].name}", "#" %>
+          </div>
+          <% i += 1 %> 
+        <% end %>  
+      </div>
+  </div>
+</div>

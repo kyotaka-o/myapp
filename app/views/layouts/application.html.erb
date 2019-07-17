@@ -19,6 +19,10 @@
   </head>
 
   <body>
+    <%= render partial: "/theme",locals:{ cube_elements: @cube_elements, random_categories: @random_categories } %>
     <%= yield %>
+    <footer>
+      <p>フッター</p>
+    </footer>
   </body>
 </html>
