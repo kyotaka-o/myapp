@@ -1,13 +1,20 @@
-<% if user_signed_in? %>
+ <% if user_signed_in? %>
   <div class="user">
-    <div class="user__avater">
-      <%= image_tag "#{current_user.image}",class:"user__avater__image" %>
-    </div> 
+    <% if current_user.image != nil %>
+      <div class="user__avater">
+        <%= image_tag "#{current_user.image}",class:"user__avater__image" %>
+      </div> 
+    <% else %>
+      <div class="user__avater">
+        <p>未登録</p>
+      </div> 
+    <% end %>
     <div class="user__name">
-      <%= "name：#{current_user.name}"%>
+      <%= fa_icon("user") %>
+      <%= current_user.name%>
     </div> 
     <div class="user__info">
-      <p>投稿件数：5件</p>
+      <%= "投稿件数：#{current_user.posts.count}件"%>
     </div> 
     <div class="user__log">
         <%= link_to "投稿", new_post_path, class:"user__log__bottun" %>

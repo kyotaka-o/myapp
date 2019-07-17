@@ -7,6 +7,9 @@
     border: 2px solid #999;
     box-shadow: 4px 4px 4px gray;
     height: 200px;
+    &:hover{
+      opacity: 0.5;
+    }
     &__left{
       width:120px;
       height: 100%;
@@ -27,6 +30,12 @@
         border-radius: 75px;
         box-shadow: 4px 4px 4px gray;
         background-color: white;
+        &__image{
+          width: 100px;
+          height: 100px;
+          border-radius: 75px;
+          opacity: 0.9;
+        }
       }
       &__name{
         height: calc(100% - 120px);
@@ -52,6 +61,7 @@
         height: 70%;
         border: 1px solid #999;
         box-shadow: 1px 1px 1px gray;
+        overflow: hidden;
         // border-radius: 5px;
         // margin: 5px 0;
       }

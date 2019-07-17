@@ -6,7 +6,7 @@
 
   <div class="contents__center">
     <div class="posts">
-      <%= render @posts %>
+      <%= render partial: "posts",locals:{ posts: @posts } %>
     </div>
   </div>
 

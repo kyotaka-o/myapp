@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Category.find(params[:category_id]).posts.includes(:user)
+    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user)
     
   end
 

@@ -5,7 +5,7 @@
         <% i = 0 %>  
         <% cube_elements.each do |element| %> 
           <div class="<%= element %>" >
-            <%= link_to "#{random_categories[i].name}", "#" %>
+            <%= link_to "#{random_categories[i].name}", category_posts_path(random_categories[i]) %>
           </div>
           <% i += 1 %> 
         <% end %>  
