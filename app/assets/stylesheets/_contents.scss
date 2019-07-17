@@ -1,6 +1,6 @@
 body,html{
   height: 100%;
-
+  background-color: rgb(240, 238, 238);
 }
 a{
   display: block;
@@ -50,7 +50,7 @@ div.stage{
       -webkit-transition:all 1s;
       animation: cuberotator 180s infinite alternate;
       // &:hover{
-      //         -webkit-transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+      //           -webkit-transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
       // }
       div{
           width: 100px;
@@ -97,7 +97,7 @@ div.stage{
 }
 @keyframes cuberotator {
   0% {
-    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform: rotateX(-30deg) rotateY(-30deg);
   }
 
   100% {
@@ -106,35 +106,37 @@ div.stage{
 }
 
 .contents{
-  height: 100%;
+  // height: 100%;
   width: 100%;
   &__left{
-    background-color: white;
+    // background-color: rgb(219, 217, 217);
     float: left;
-    height: 100%;
+    // height: 100%;
     width: 20%;
-    border: 2px solid #999;
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px gray;
+    // border: 2px solid #999;
+    // border-radius: 5px;
+    // box-shadow: 4px 4px 4px gray;
   }
   
   &__center{
+    margin: 10px 0;
     background-color:  white;
     float: left;
-    height: 100%;
+    // height: 100%;
     width: 60%;
     border: 2px solid #999;
     border-radius: 5px;
     box-shadow: 4px 4px 4px gray;
+    // overflow:auto;
   }
   
   &__right{
-    background-color: white;
+    // background-color: #999;
     float: left;
-    height: 100%;
+    // height: 100%;
     width: 20%;
-    border: 2px solid #999;
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px gray;
+    // border: 2px solid #999;
+    // border-radius: 5px;
+    // box-shadow: 4px 4px 4px gray;
   }
 }

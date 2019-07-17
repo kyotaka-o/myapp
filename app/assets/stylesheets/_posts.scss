@@ -3,9 +3,65 @@
   width: 100%;
   .post{
     margin: 30px auto;
-    width: 80%;
+    width: 90%;
     border: 2px solid #999;
     box-shadow: 4px 4px 4px gray;
+    height: 200px;
+    &__left{
+      width:120px;
+      height: 100%;
+      display: inline-block;
+      text-align: center;
+      border: 1px solid #999;
+      box-shadow: 2px 2px 2px gray;
+      float: left;
+      background-color: #303649;
+      color: aliceblue;
+      &__avater{
+        margin: 10px auto;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #999;
+        color: #999;
+        line-height: 100px;
+        border-radius: 75px;
+        box-shadow: 4px 4px 4px gray;
+        background-color: white;
+      }
+      &__name{
+        height: calc(100% - 120px);
+        line-height: calc(100% - 120px);
+        p {
+          margin:40px auto 0;
+        }
+      }
+    }
+    &__right{
+      display: inline-block;
+      width:calc(100% - 120px);
+      height: 100%;
+      float: left;
+      // padding: 5px 10px;
+      &__title{
+        height: 15%;
+        border: 1px solid #999;
+        box-shadow: 1px 1px 1px gray;
+        // border-radius: 5px;
+      }
+      &__content{
+        height: 70%;
+        border: 1px solid #999;
+        box-shadow: 1px 1px 1px gray;
+        // border-radius: 5px;
+        // margin: 5px 0;
+      }
+      &__info{
+        height: 15%;
+        border: 1px solid #999;
+        box-shadow: 1px 1px 1px gray;
+        // border-radius: 5px;
+      }
+    }
 
   }
 }

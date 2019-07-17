@@ -2,28 +2,17 @@
   <p>Solve Error DateBase(仮)</p>
     <div class="stage">
       <div class="cube">
-          <div class="front">
-            <%= link_to "#{@random_categories[0].name}", "#" %>
+        <% i = 0 %>  
+        <% @cube_elements.each do |element| %> 
+          <div class="<%= element %>" >
+            <%= link_to "#{@random_categories[i].name}", "#" %>
           </div>
-          <div class="back">
-            <%= link_to "#{@random_categories[1].name}", "#" %>
-          </div>
-          <div class="left">
-            <%= link_to "#{@random_categories[2].name}", "#" %>
-          </div>
-          <div class="right">
-            <%= link_to "#{@random_categories[3].name}", "#" %>
-          </div>
-          <div class="top">
-            <%= link_to "#{@random_categories[4].name}", "#" %>  
-          </div>
-          <div class="bottom">
-            <%= link_to "#{@random_categories[5].name}", "#" %>
-          </div>
+          <% i += 1 %> 
+        <% end %>  
       </div>
   </div>
 </div>
-<div class="contents">
+<div class="contents clearfix">
 
   <div class="contents__left">
     <div class="categories">
@@ -39,20 +28,115 @@
   <div class="contents__center">
     <div class="posts">
       <div class="post">
-        <p>aaaaaaaaaaaaaaa</p>
-        <p>bbbbbbbbbbbbbbbb</p>
-        <p>cccccccccccccccc</p>
+        <div class="post__left">
+          <div class="post__left__avater">     
+            <p>アバタ</p>
+          </div>
+          <div class="post__left__name">     
+            <p>名前</p>
+          </div>
+        </div>
+        <div class="post__right">
+          <div class="post__right__title">     
+            <p>タイトル</p>
+          </div>
+          <div class="post__right__content">     
+            <p>内容</p>
+          </div>
+          <div class="post__right__info">     
+            <p>時間</p>
+          </div>
+        </div>
       </div>
+
       <div class="post">
-        <p>aaaaaaaaaaaaaaa</p>
-        <p>bbbbbbbbbbbbbbbb</p>
-        <p>cccccccccccccccc</p>
+        <div class="post__left">
+          <div class="post__left__avater">     
+            <p>アバタ</p>
+          </div>
+          <div class="post__left__name">     
+            <p>名前</p>
+          </div>
+        </div>
+        <div class="post__right">
+          <div class="post__right__title">     
+            <p>タイトル</p>
+          </div>
+          <div class="post__right__content">     
+            <p>内容</p>
+          </div>
+          <div class="post__right__info">     
+            <p>時間</p>
+          </div>
+        </div>
       </div>
+
       <div class="post">
-        <p>aaaaaaaaaaaaaaa</p>
-        <p>bbbbbbbbbbbbbbbb</p>
-        <p>cccccccccccccccc</p>
+        <div class="post__left">
+          <div class="post__left__avater">     
+            <p>アバタ</p>
+          </div>
+          <div class="post__left__name">     
+            <p>名前</p>
+          </div>
+        </div>
+        <div class="post__right">
+          <div class="post__right__title">     
+            <p>タイトル</p>
+          </div>
+          <div class="post__right__content">     
+            <p>内容</p>
+          </div>
+          <div class="post__right__info">     
+            <p>時間</p>
+          </div>
+        </div>
       </div>
+
+      <div class="post">
+        <div class="post__left">
+          <div class="post__left__avater">     
+            <p>アバタ</p>
+          </div>
+          <div class="post__left__name">     
+            <p>名前</p>
+          </div>
+        </div>
+        <div class="post__right">
+          <div class="post__right__title">     
+            <p>タイトル</p>
+          </div>
+          <div class="post__right__content">     
+            <p>内容</p>
+          </div>
+          <div class="post__right__info">     
+            <p>時間</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post__left">
+          <div class="post__left__avater">     
+            <p>アバタ</p>
+          </div>
+          <div class="post__left__name">     
+            <p>名前</p>
+          </div>
+        </div>
+        <div class="post__right">
+          <div class="post__right__title">     
+            <p>タイトル</p>
+          </div>
+          <div class="post__right__content">     
+            <p>内容</p>
+          </div>
+          <div class="post__right__info">     
+            <p>時間</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -95,3 +179,7 @@
   </div>
 
 </div>
+
+<footer>
+<p>aaaaaaaaaaaaa</p>
+</footer>
