@@ -1,7 +1,6 @@
 footer{
-  width: 100%;
-  height: 150px;
-  background-color: #303649;
+  @include ele-size(100%,150px);
+  background-color: $mainBlueColor;
   color: aliceblue;
   text-align:center; 
 }

@@ -1,17 +1,2 @@
-<div class="contents clearfix">
 
-  <div class="contents__left">
-    <%= render partial: "/categories",locals:{ categories: @categories } %>
-  </div>
-
-  <div class="contents__center">
-    <%= render partial: "form",locals:{ post: @post } %>
-  </div>
-
-  <div class="contents__right">
-    <%= render partial: "/user" %>
-    <div class="news">
-    </div>
-  </div>
-
-</div>
+<%= render partial: "form",locals:{ post: @post ,categories: @categories} %>

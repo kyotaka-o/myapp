@@ -1,30 +1,22 @@
 .fa{
   font-size: 30px ;
-
 }
 .user{
   width: 90%;
+  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
   margin: 30px auto;
-  border: 2px solid #999;
-  border-radius: 10px;
-  box-shadow: 4px 4px 4px gray;
   text-align: center;
-  background-color: #303649;
+  background-color: $mainBlueColor;
   color: aliceblue;
-
   &__avater{
     margin: 10px auto;
-    width: 150px;
-    height: 150px;
-    border: 2px solid #999;
-    color: #999;
+    @include ele-size(150px,150px);
+    @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),75px);
+    color: $borderGrayColor;
     line-height: 150px;
-    border-radius: 75px;
-    box-shadow: 4px 4px 4px gray;
     background-color: white;
     &__image{
-      width: 150px;
-      height: 150px;
+      @include ele-size(150px,150px);
       border-radius: 75px;
       opacity: 0.9;
     }
@@ -34,25 +26,13 @@
     &__bottun{
       display:inline-block;
       width: 40%;
-      border: 2px solid #999;
-      border-radius: 5px;
-      box-shadow: 4px 4px 4px gray;
+      @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
       background-color: white;
       &:hover{
-        background-color:rgba(175, 247, 213, 0.8);
-        width: 50%;
-        height:30px;
+        background-color:$hoverGreenColor;
+        @include ele-size(50%,30px);
         line-height: 30px;
       }
     }
-    // &__out{
-    //   display:inline-block;
-    //   width: 40%;
-    //   border: 2px solid #999;
-    //   border-radius: 5px;
-    //   box-shadow: 4px 4px 4px gray;
-    //   background-color: white;
-    // }
-
   }
 }

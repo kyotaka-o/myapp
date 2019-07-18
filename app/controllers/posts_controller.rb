@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user)
-    
   end
 
   def new
@@ -11,13 +10,16 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post.save
-    redirect_to root_path
+    redirect_to category_posts_path(post_params[:category_id])
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
   def post_params
     params.require(:post).permit(:title,:body,:category_id).merge(user_id:current_user.id)
-  
   end
 
 end

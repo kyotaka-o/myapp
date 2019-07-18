@@ -1,20 +1,8 @@
-<div class="contents clearfix">
-
-  <div class="contents__left">
-    <%= render partial: "/categories",locals:{ categories: @categories } %>
-  </div>
-
-  <div class="contents__center">
-    <div class="posts">
-      <%= render partial: "posts",locals:{ posts: @posts } %>
-    </div>
-  </div>
-
-  <div class="contents__right">
-    <%= render partial: "/user" %>
-    <div class="news">
-    </div>
-  </div>
-
+<div class="posts">
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>まだ投稿がありません</p>
+<% end %>
 </div>
-
+ 
