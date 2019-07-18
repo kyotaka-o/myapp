@@ -19,6 +19,26 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "/theme",locals:{ cube_elements: @cube_elements, random_categories: @random_categories } %>
+
+    <div class="contents clearfix">
+
+      <div class="contents__left">
+        <%= render partial: "/categories",locals:{ categories: @categories } %>
+      </div>
+
+      <div class="contents__center">
+        <%= yield %>
+      </div>
+
+      <div class="contents__right">
+        <%= render partial: "/user" %>
+      <div class="news">
+      </div>
+    </div>
+  </div>
+    <footer>
+      <p>フッター</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,12 @@
+
+  <div class="categories">
+    <p>
+      <%= fa_icon("bars") %>
+      Categories
+    </p>
+    <% categories.each do |category| %>   
+      <div class="category">
+        <%= link_to "#{category.name}", category_posts_path(category) %>
+      </div>
+    <% end %>  
+  </div>

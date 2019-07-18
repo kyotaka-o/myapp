@@ -1,0 +1,9 @@
+@mixin ele-size($wid:null,$high:null) {
+  width: $wid;
+  height: $high;
+}
+@mixin border-info($border:null,$shadow:null,$radius:null) {
+  border: $border;
+  box-shadow: $shadow;
+  border-radius: $radius;
+}

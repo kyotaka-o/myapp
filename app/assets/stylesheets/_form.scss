@@ -1,0 +1,17 @@
+select {
+    font-size: 15px;
+    display:inline-block;
+    width: 50%;
+}
+.form_box{
+  padding: 20px;
+  &__title{
+  }
+  &__body{
+    min-height: 600px;
+  }
+  &__submit{
+    margin:20px auto;
+    display: block;
+  }
+}
