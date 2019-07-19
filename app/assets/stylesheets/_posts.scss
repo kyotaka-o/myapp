@@ -1,5 +1,8 @@
 .posts{
   @include ele-size(100%,100%);
+  .fa{
+    font-size: 20px;
+  }
   .post{
     margin: 30px auto;
     @include ele-size(90%,120px);
@@ -41,16 +44,43 @@
         height: 30%;
         padding: 5px 10px;
         @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
+        &__time{
+          display: inline-block;
+          
+        }
+        &__name{
+          display: inline-block;
+          padding: 0 10px;
+        }
+        &__status{
+          text-align: center;
+          display: inline-block;
+          float: right;
+          padding:0 10px; 
+          width: 70px;
+          color: white;
+          @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
+          opacity: 0.8;
+        }
       }
     }
+    &--show{
+      margin-bottom: 0;
+    }
+    &--open{
+      background-color: #e4486a;
 
+    }
+    &--closed{
+      background-color: #48e45d;
+    }
     &__bottom{
       word-wrap: break-word;
       @include ele-size(90%,);
       margin: 0 auto 30px;
       padding: 10px;
       min-height: 300px;
-      color:$borderGrayColor;
+      // color:$borderGrayC olor;
       background-color: white;
       @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
     }

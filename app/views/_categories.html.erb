@@ -5,8 +5,10 @@
       Categories
     </p>
     <% categories.each do |category| %>   
-      <div class="category">
-        <%= link_to "#{category.name}", category_posts_path(category) %>
-      </div>
+      <%= link_to category_posts_path(category) do %>
+        <div class="category">
+          <%= category.name %>
+        </div>
+      <% end %>  
     <% end %>  
   </div>

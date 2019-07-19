@@ -1,28 +1,8 @@
 <div class="posts">
-  <div class="post">
-
-    <div class="post__left">
-      <div class="post__left__avater">  
-        <% if @post.user.image.present? %>
-          <%= image_tag "#{@post.user.image}",class:"post__left__avater__image" %>
-        <% else %>
-          <p>NoImage</p>
-        <% end %>   
-      </div>
-    </div>
-
-    <div class="post__right">
-      <div class="post__right__title">     
-        <p><%= @post.title %></p>
-      </div>
-      <div class="post__right__info">     
-        <p><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
-      </div>
-    </div>
-
-
+  <div class="post post--show">
+    <%= render partial: "/post-main",locals:{ post: @post} %>
   </div>
   <div class="post__bottom">     
-        <p><%= safe_join(@post.body.split("\n"), tag(:br)) %></p>
+    <%= sanitize markdown(@post.body) %>
   </div>
 </div>

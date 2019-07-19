@@ -1,9 +1,16 @@
 body,html{
   height: 100%;
   background-color: rgb(240, 238, 238);
+  box-sizing: border-box;
 }
-a{
-  display: block;
+.subject{
+  & p{
+    font-size: 30px;
+    padding-left:10px;
+    background-color: $mainBlueColor;
+    color:  white;
+    @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),2px);
+  } 
 }
 .theme{
   @include ele-size(100%,300px);

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'categories#index'
   resources :posts,except:[:index]
+  resources :users,only:[:index,:show]
   resources :categories do
     resources :posts,only:[:index]
   end
