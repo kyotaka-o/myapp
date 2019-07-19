@@ -7,10 +7,12 @@
           <p>NoImage</p>
       <% end %>
     </div>
-    <div class="user__name">
-      <%= fa_icon("user") %>
-      <%= current_user.name%>
-    </div> 
+    <%= link_to  user_path(current_user) do%>
+      <div class="user__name">
+        <%= fa_icon("user") %>
+        <%= current_user.name%>
+      </div> 
+    <% end %>
     <div class="user__info">
       <%= "投稿件数：#{current_user.posts.count}件"%>
     </div> 

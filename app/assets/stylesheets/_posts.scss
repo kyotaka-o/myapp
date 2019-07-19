@@ -1,14 +1,17 @@
 .posts{
   @include ele-size(100%,100%);
+  .fa{
+    font-size: 20px;
+  }
   .post{
     margin: 30px auto;
-    @include ele-size(90%,200px);
+    @include ele-size(90%,120px);
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
     &__left{
       @include ele-size(120px,100%);
       display: inline-block;
       text-align: center;
-      @include border-info((1px solid $borderGrayColor),(2px 2px 2px gray),);
+      // @include border-info((1px solid $borderGrayColor),(2px 2px 2px gray),);
       float: left;
       background-color: $mainBlueColor;
       color: aliceblue;
@@ -17,19 +20,12 @@
         @include ele-size(100px,100px);
         color: $borderGrayColor;
         line-height: 100px;
-        @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),75px);
+        @include border-info((1px solid $borderGrayColor),(2px 2px 2px gray),75px);
         background-color: white;
         &__image{
           @include ele-size(100px,100px);
           border-radius: 75px;
           opacity: 0.9;
-        }
-      }
-      &__name{
-        height: calc(100% - 120px);
-        line-height: calc(100% - 120px);
-        p {
-          margin:40px auto 0;
         }
       }
     }
@@ -39,18 +35,54 @@
       float: left;
       color:$borderGrayColor;
       &__title{
-        height: 15%;
-        @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
-      }
-      &__content{
+        word-wrap: break-word;
         height: 70%;
+        padding: 10px;
         @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
-        overflow: hidden;
       }
       &__info{
-        height: 15%;
+        height: 30%;
+        padding: 5px 10px;
         @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
+        &__time{
+          display: inline-block;
+          
+        }
+        &__name{
+          display: inline-block;
+          padding: 0 10px;
+        }
+        &__status{
+          text-align: center;
+          display: inline-block;
+          float: right;
+          padding:0 10px; 
+          width: 70px;
+          color: white;
+          @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
+          opacity: 0.8;
+        }
       }
+    }
+    &--show{
+      margin-bottom: 0;
+    }
+    &--open{
+      background-color: #e4486a;
+
+    }
+    &--closed{
+      background-color: #48e45d;
+    }
+    &__bottom{
+      word-wrap: break-word;
+      @include ele-size(90%,);
+      margin: 0 auto 30px;
+      padding: 10px;
+      min-height: 300px;
+      // color:$borderGrayC olor;
+      background-color: white;
+      @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
     }
   }
 }

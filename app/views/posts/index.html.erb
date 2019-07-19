@@ -1,8 +1,13 @@
+<div  class="subject">
+  <p>
+  <%= @current_category %>
+  </p>
+ </div> 
 <div class="posts">
-<% if @posts.present? %>
-  <%= render @posts %>
-<% else %>
-  <p>まだ投稿がありません</p>
-<% end %>
+  <% if @posts.present? %>
+    <%= render @posts %>
+  <% else %>
+    <p>まだ投稿がありません</p>
+  <% end %>
 </div>
  

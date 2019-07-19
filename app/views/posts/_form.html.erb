@@ -2,5 +2,6 @@
   <%= form.text_field :title ,placeholder:"タイトル",class:"form_box__title" %>
   <%= form.text_area :body,placeholder:"内容",class:"form_box__body" %>
   <%= form.select :category_id, categories.map{|t| [t.name, t.id]} ,prompt:"カテゴリを選択してください"%>
+  <%= form.select :status, ["open","closed"], :prompt => "ステータスを選択してください"%>
   <%= form.submit class:"form_box__submit" %>
 <% end %>
