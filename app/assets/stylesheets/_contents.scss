@@ -2,6 +2,7 @@ body,html{
   height: 100%;
   background-color: rgb(240, 238, 238);
   box-sizing: border-box;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .subject{
   & p{
@@ -12,6 +13,9 @@ body,html{
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),2px);
   } 
 }
+.theme__logo{
+  margin-right: 10px;
+}
 .theme{
   @include ele-size(100%,300px);
   background: url(bg.jpg), linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);
@@ -19,7 +23,7 @@ body,html{
   animation: huerotator 10s infinite alternate;
   text-align: center;
   line-height: 100px;
-  font-size: 100px;
+  font-size: 60px;
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;  
   /* 画像をタイル状に繰り返し表示しない */
@@ -30,7 +34,10 @@ body,html{
   background-size: cover;
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #464646;
-  font-family: 'Barriecito', cursive;
+
+  font-family: 'Press Start 2P', cursive;
+
+  // font-family: 'Barriecito', cursive;
   & p{
     color: black;
   }
@@ -70,7 +77,8 @@ div.stage{
           line-height: 100px;
           position: absolute;
           background-color: rgba(175, 247, 213, 0.5);
-          font-size: 20px;
+          font-size: 10px;
+          overflow: hidden;
       }
       div.front{
           top: 0;

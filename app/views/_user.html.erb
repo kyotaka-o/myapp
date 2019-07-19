@@ -9,12 +9,13 @@
     </div>
     <%= link_to  user_path(current_user) do%>
       <div class="user__name">
-        <%= fa_icon("user") %>
+        <%= fa_icon("user-secret") %>
         <%= current_user.name%>
       </div> 
     <% end %>
     <div class="user__info">
-      <%= "投稿件数：#{current_user.posts.count}件"%>
+      <%= fa_icon("paint-brush") %>
+      <%= "#{current_user.posts.count}件"%>
     </div> 
     <div class="user__log">
         <%= link_to "投稿", new_post_path, class:"user__log__bottun" %>
@@ -38,3 +39,8 @@
     </div> 
   </div> 
 <% end %>
+<div class="user-list">
+  <%= link_to users_path,method: :GET  do %>
+    <p><%= fa_icon("user-secret") %>ユーザー一覧</p>
+  <% end %>
+</div> 
