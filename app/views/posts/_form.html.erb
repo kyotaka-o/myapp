@@ -5,6 +5,24 @@
   <% else %>  
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body"%>
   <% end %>  
+  <% if post.images.present? %>
+    <div class="post__bottom__images">
+      <% post.images.each do |image,index| %>
+        <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}"%> 
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form_box__input">
+    <%= fa_icon("image") %>
+    <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
+  </div>
+  <% if post.video_url.present? %>
+    <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+  <% end %>
+  <div class="form_box__input">
+    <%= fa_icon("play-circle") %>
+    <%= form.file_field :video %>
+  </div>
   <%= form.select :category_id, categories.map{|t| [t.name, t.id]} ,prompt:"カテゴリを選択してください"%>
   <%= form.select :status, ["open","closed"], :prompt => "ステータスを選択してください"%>
   <%= form.submit class:"form_box__submit" %>

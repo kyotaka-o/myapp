@@ -24,7 +24,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    update_params = post_params
+    if update_params[:images] != nil
+      add_more_images(update_params[:images])
+      update_params[:images] = @post.images
+    end
+    if @post.update(update_params)
       redirect_to post_path(params[:id])
     else
       render :edit
@@ -40,11 +45,17 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:body,:category_id,:status).merge(user_id:current_user.id)
+    params.require(:post).permit(:title,:body,:category_id,:status,{images: []},:video).merge(user_id:current_user.id)
   end
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def add_more_images(new_images)
+    images = @post.images 
+    images += new_images
+    @post.images = images
   end
 
   def make_template

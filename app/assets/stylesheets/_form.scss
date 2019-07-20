@@ -1,8 +1,10 @@
 select {
     font-size: 15px;
     display:inline-block;
-    width: 50%;
+    width: 45%;
+    margin: 10px;
 }
+
 .form_box,.new_user{
   padding: 20px;
   &__title{
@@ -13,5 +15,9 @@ select {
   &__submit{
     margin:20px auto;
     display: block;
+  }
+  &__input{
+    display: block;
+    margin: 10px auto;
   }
 }
