@@ -4,5 +4,16 @@
   </div>
   <div class="post__bottom">     
     <%= sanitize markdown(@post.body) %>
+    <% if @post.images.present? %>
+      <div class="post__bottom__images">
+        <% @post.images.each do |image| %>
+          <%= image_tag "#{image}",class:"post__bottom__images__image" %>     
+        <% end %>
+      </div>
+    <% end %>
+    <% if @post.video_url.present? %>
+      <%= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+    <% end %>
   </div>
+
 </div>

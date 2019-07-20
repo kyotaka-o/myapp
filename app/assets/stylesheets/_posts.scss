@@ -83,6 +83,13 @@
       // color:$borderGrayC olor;
       background-color: white;
       @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
+      &__images{
+        display: flex;
+        flex-wrap: wrap;
+        &__image{
+          margin: 30px;
+        }
+      }
     }
   }
 }
