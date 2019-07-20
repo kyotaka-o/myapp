@@ -137,7 +137,7 @@ div.stage{
     background-color:  white;
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
     float: left;
-    min-height: 500px;
+    min-height: 300px;
     width: 60%;
   }
   

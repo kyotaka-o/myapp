@@ -39,8 +39,26 @@
     </div> 
   </div> 
 <% end %>
+
 <div class="user-list">
   <%= link_to users_path,method: :GET  do %>
     <p><%= fa_icon("user-secret") %>ユーザー一覧</p>
   <% end %>
+</div> 
+
+<div class="user-ranking">
+  <div class="user-ranking__title">
+    <p><%= fa_icon("user-secret") %>ユーザー投稿数ランキング</p>
+  </div> 
+  <% i = 0 %>
+  <% @ranking.each do |user| %>
+    <%= link_to user_path(user),method: :GET  do %>
+      <div class="user-ranking__box">
+        <%= "#{i+1}位：#{user.name}さん  #{@counts[i]}件" %>
+      </div> 
+    <% end %>
+    <% i += 1 %>
+
+  <% end %>
+
 </div> 

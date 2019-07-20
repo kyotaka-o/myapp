@@ -57,8 +57,6 @@
   display:flex;
   width: 100%;
   flex-wrap: wrap;
-  // word-wrap: break-word;
-  // padding: 10px;
   &__person{
     @include ele-size(160px,180px);
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
@@ -80,5 +78,26 @@
       }
 
     }
+  }
+}
+
+.user-ranking{
+  width: 90%;
+  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
+  margin: 30px auto;
+  background-color: $mainBlueColor;
+  color: aliceblue;
+  padding: 10px;
+  &__title{
+    text-align: center;
+  }
+  &__box{
+    padding:0 10px;
+    width: 90%;
+    @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
+    background-color: white;
+    // color: black;
+    margin: 20px auto;
+
   }
 }
