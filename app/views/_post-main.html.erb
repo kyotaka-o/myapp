@@ -18,16 +18,22 @@
       <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
     </div>
     <div class="post__right__info__name"> 
-      投稿者：<%= post.user.name %>さん
-      <% if user_signed_in? && (request.path_info == "/posts/#{post.id}")%>
-        <% if current_user.id == post.user_id %>  
-          <%= link_to edit_post_path(post) do %>    
-            <%= fa_icon("edit") %>
-          <% end %>
-          <%= link_to post_path(post),method: :delete do %>   
-            <%= fa_icon("trash") %>
+      <% if request.path_info == "/posts/#{post.id}" %>    
+        <%= link_to user_path(post.user) do %>   
+          投稿者：<%= post.user.name %>さん
+        <% end %>
+        <% if user_signed_in? %>
+          <% if current_user.id == post.user_id %>  
+            <%= link_to edit_post_path(post) do %>    
+              　<%= fa_icon("edit") %>
+            <% end %>
+            <%= link_to post_path(post),method: :delete do %>   
+              　<%= fa_icon("trash") %>
+            <% end %>
           <% end %>
         <% end %>
+      <% else %>
+        投稿者：<%= post.user.name %>さん
       <% end %>
     </div>
     <% if post.status == "open" %>

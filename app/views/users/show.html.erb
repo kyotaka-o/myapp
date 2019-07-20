@@ -1,6 +1,6 @@
 <div  class="subject">
   <p>
-    <%= fa_icon("user-secret") %><%= @posts[0].user.name %>さんの投稿一覧
+    <%= fa_icon("user-secret") %><%= @user.name %>さんの投稿一覧
   </p>
 </div>
 <div class="posts">
@@ -9,6 +9,8 @@
       <%= render partial: "/posts/post",locals:{ post: post} %>
     <% end %>
   <% else %>
-    <p>まだ投稿がありません</p>
+    <div class="message">
+      <p>まだ投稿がありません</p>
+    </div> 
   <% end %>
 </div>

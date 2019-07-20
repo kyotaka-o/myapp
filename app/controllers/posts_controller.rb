@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only:[:show,:edit,:update,:destroy]
+  before_action :make_template, only:[:new]
+
   def index
     @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user)
     @current_category = Category.find(params[:category_id]).name
@@ -43,6 +45,12 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def make_template
+    @template = "### どんなエラー？\r"+"***\r"+"### どんな環境？\r"+"***\r"+"### どうやって解決した？\r"+"***\r"
+                 
+                 
   end
 
 end

@@ -1,5 +1,6 @@
 <div  class="subject">
   <p>
+  <%= fa_icon("bars") %>
   <%= @current_category %>
   </p>
  </div> 
@@ -7,7 +8,9 @@
   <% if @posts.present? %>
     <%= render @posts %>
   <% else %>
-    <p>まだ投稿がありません</p>
+    <div class="message">
+      <p>まだ投稿がありません</p>
+    </div> 
   <% end %>
 </div>
  
