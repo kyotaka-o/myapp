@@ -64,4 +64,7 @@ $(document).on('turbolinks:load', function() {
     files_array[0] = "";
     $(this).parent().remove();
   });
+  $('#post-images-view').on('click', '.bottun-close-org',function(){
+    $(this).parent().remove();
+  });
 });
