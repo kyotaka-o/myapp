@@ -1,4 +1,4 @@
-<%= form_with model: post ,class:"form_box" do |form| %>
+<%= form_with model: post ,class:"form_box",id:"form_box-form" do |form| %>
   <%= form.text_field :title ,placeholder:"タイトル",class:"form_box__title" %>
   <% if request.path_info == "/posts/new" %>  
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body",value:@template %>
@@ -6,13 +6,17 @@
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body"%>
   <% end %>  
   <% if post.images.present? %>
-    <div class="post__bottom__images">
-      <% post.images.each do |image,index| %>
+    <div class="post__bottom__images" id="post-images-view">
+      <% index = 0 %>
+      <% post.images.each do |image| %>
         <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}"%> 
+        <input multiple="multiple" type="hidden" name="box[]" value="<%= index %>" />
+        <% index += 1 %>
       <% end %>
     </div>
   <% end %>
-  <div class="form_box__input">
+  <%= image_tag "",class:"post__bottom__images__image" ,id:"img_prev",display:"none"  %> 
+  <div class="form_box__input" id="image_input">
     <%= fa_icon("image") %>
     <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
   </div>

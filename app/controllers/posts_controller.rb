@@ -21,16 +21,22 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @new_post = Post.new
   end
 
   def update
+    
+    # binding.pry
     update_params = post_params
     if update_params[:images] != nil
-      add_more_images(update_params[:images])
+      add_more_images(image_params[:images])
       update_params[:images] = @post.images
     end
     if @post.update(update_params)
-      redirect_to post_path(params[:id])
+      respond_to do |format|
+        format.html {redirect_to post_path(post_path(params[:id]))} 
+        format.json 
+      end
     else
       render :edit
     end
@@ -58,6 +64,11 @@ class PostsController < ApplicationController
     @post.images = images
   end
 
+  def image_params
+    #imageのストロングパラメータの設定.js側でimagesをrequireすれば画像のみを引き出せるように設定する。
+    params.require(:image).permit({:images => []})
+  end
+  
   def make_template
     @template = "### どんなエラー？\r"+"***\r"+"### どんな環境？\r"+"***\r"+"### どうやって解決した？\r"+"***\r"
                  
