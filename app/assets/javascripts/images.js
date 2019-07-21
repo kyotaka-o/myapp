@@ -1,6 +1,9 @@
 $(document).on('turbolinks:load', function() { 
-  function buildHTML(input) {
-    var html =`<img src="${input}" class="post__bottom__images__image" width="300px" height="300px"> `
+  function buildHTML(input,index) {
+    var html = `<div class="post__bottom__images__view" >
+                  <img src="${input}" class="post__bottom__images__image" width="300px" height="300px" >
+                  <div class="bottun-close" data-add-img-num="${index}">✖︎</div>
+                 </div> `
     return html;
   }
 
@@ -8,14 +11,15 @@ $(document).on('turbolinks:load', function() {
   $("#post_images").change(function(e){
     files = e.target.files[0];
     files_array.push(files)
+    var index = files_array.length-1;
     var fileReader = new FileReader();
     // ファイルが読み込まれた際に、行う動作を定義する。
     fileReader.onload = function( event ) {
     // 画像のurlを取得します。
     var loadedImageUri = event.target.result;
     // 取得したURLを利用して、ビューにHTMLを挿入する。
-    var html = buildHTML(loadedImageUri);
-    $("#image_input").before(html);
+    var html = buildHTML(loadedImageUri,index);
+    $("#post-images-view").append(html);
     };
     // ファイルの読み込みを行う。
     fileReader.readAsDataURL(files);
@@ -24,9 +28,12 @@ $(document).on('turbolinks:load', function() {
   $('#form_box-form').on('submit', function(e){
     e.preventDefault();
 
+
+    var new_files_array = files_array.filter(function(e) { return e; });
+    console.log(new_files_array)
     var formData = new FormData(this);
 
-    files_array.forEach(function(file){
+    new_files_array.forEach(function(file){
       formData.append("image[images][]" , file)
      });
     //  for(var item of formData){
@@ -51,4 +58,10 @@ $(document).on('turbolinks:load', function() {
     })
   });
 
+  $('#post-images-view').on('click', '.bottun-close',function(){
+    var val = $(this).attr("data-add-img-num");
+    console.log(val)
+    files_array[0] = "";
+    $(this).parent().remove();
+  });
 });

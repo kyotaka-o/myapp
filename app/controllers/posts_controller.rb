@@ -12,9 +12,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.save
-    redirect_to category_posts_path(post_params[:category_id])
+    @post = Post.new(post_params)
+    if params[:image] != nil
+      add_more_images(image_params[:images])
+    end
+    if @post.save
+      respond_to do |format|
+        format.html {redirect_to post_path(post_path(params[:id]))} 
+        format.json 
+      end
+    else
+      render :new
+    end
   end
 
   def show
@@ -25,10 +34,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    
-    # binding.pry
+    binding.pry
     update_params = post_params
-    if update_params[:images] != nil
+    if params[:image] != nil
       add_more_images(image_params[:images])
       update_params[:images] = @post.images
     end
@@ -51,7 +59,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:body,:category_id,:status,{images: []},:video).merge(user_id:current_user.id)
+    params.require(:post).permit(:title,:body,:category_id,:status,:video).merge(user_id:current_user.id)
   end
 
   def find_post

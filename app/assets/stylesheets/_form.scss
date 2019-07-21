@@ -21,3 +21,20 @@ select {
     margin: 10px auto;
   }
 }
+
+.post__bottom__images__view{
+  position: relative;
+  display:inline-block;
+  .bottun-close,.bottun-close-org{
+    position: absolute;
+    top:5px;
+    left:5px;
+    background-color: #039be5;
+    color: white;
+    cursor: pointer;
+    @include ele-size(30px,30px);
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+  }
+}
