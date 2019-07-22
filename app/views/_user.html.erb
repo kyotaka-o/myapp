@@ -7,16 +7,18 @@
           <p>NoImage</p>
       <% end %>
     </div>
+    
+    <div class="user__name">
+      <%= icon('fas', 'user-astronaut')%>
+      <%= current_user.name%>
+    </div> 
+
     <%= link_to  user_path(current_user) do%>
-      <div class="user__name">
-        <%= fa_icon("user-secret") %>
-        <%= current_user.name%>
+      <div class="user__info">
+        <%= icon('fas', 'pencil-alt')%>
+        <%= "#{current_user.posts.count}件"%>
       </div> 
     <% end %>
-    <div class="user__info">
-      <%= fa_icon("paint-brush") %>
-      <%= "#{current_user.posts.count}件"%>
-    </div> 
     <div class="user__log">
         <%= link_to "投稿", new_post_path, class:"user__log__bottun" %>
         <%= link_to "ログアウト", destroy_user_session_path, class:"user__log__bottun",method: :DELETE %>
@@ -42,13 +44,13 @@
 
 <div class="user-list">
   <%= link_to users_path,method: :GET  do %>
-    <p><%= fa_icon("user-secret") %>ユーザー一覧</p>
+    <p><%= icon('fas', 'user-astronaut')%>ユーザー一覧</p>
   <% end %>
 </div> 
 
 <div class="user-ranking">
   <div class="user-ranking__title">
-    <p><%= fa_icon("user-secret") %>ユーザー投稿数ランキング</p>
+    <p>ユーザー投稿数ランキング<%= icon('fas', 'pencil-alt')%></p>
   </div> 
   <% i = 0 %>
   <% @ranking.each do |user| %>

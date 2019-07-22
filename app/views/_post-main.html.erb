@@ -24,11 +24,11 @@
         <% end %>
         <% if user_signed_in? %>
           <% if current_user.id == post.user_id %>  
-            <%= link_to edit_post_path(post) do %>    
-              　<%= fa_icon("edit") %>
+            <%= link_to edit_post_path(post) do %> 
+              　<%= icon('fas', 'edit')%>   
             <% end %>
-            <%= link_to post_path(post),method: :delete do %>   
-              　<%= fa_icon("trash") %>
+            <%= link_to post_path(post),method: :delete do %>
+              　<%= icon('fas', 'trash')%>    
             <% end %>
           <% end %>
         <% end %>

@@ -12,6 +12,12 @@ body,html{
     color:  white;
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),2px);
   } 
+  & .fas{
+    font-size:30px;
+  }
+}
+.fas{
+  font-size:20px;
 }
 .theme__logo{
   margin-right: 10px;

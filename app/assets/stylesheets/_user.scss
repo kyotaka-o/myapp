@@ -97,6 +97,9 @@
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
     background-color: white;
     margin: 20px auto;
+    &:hover{
+      background-color:$hoverGreenColor;
+    }
 
   }
 }

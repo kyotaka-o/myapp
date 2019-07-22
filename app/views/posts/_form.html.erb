@@ -22,7 +22,7 @@
   </div>
 
   <div class="form_box__input" id="image_input">
-    <%= fa_icon("image") %>
+    <%= icon('fas', "image") %>
     <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
   </div>
   <% if post.video_url.present? %>
@@ -30,7 +30,7 @@
   <% end %>
 
   <div class="form_box__input">
-    <%= fa_icon("play-circle") %>
+    <%= icon('fas', "video") %>
     <%= form.file_field :video %>
   </div>
 

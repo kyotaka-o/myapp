@@ -11,9 +11,8 @@
     </div>
     <div  class="all-user__person__bottom">
 
-        <p><%= fa_icon("user-secret") %><%= user.name %>さん</p> 
-
-      <p><%= fa_icon("paint-brush") %><%= user.posts.count %>件</p> 
+        <p><%= icon('fas', 'user-astronaut')%><%= user.name %>さん</p> 
+      <p><%= icon('fas', 'pencil-alt') %><%= user.posts.count %>件</p> 
     </div>
   </div>
 <% end %>

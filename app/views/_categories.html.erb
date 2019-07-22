@@ -1,8 +1,8 @@
 
   <div class="categories">
     <p>
-      <%= fa_icon("bars") %>
-      Categories
+      <%= icon('fas', 'bars')%>
+      カテゴリ一覧
     </p>
     <% categories.each do |category| %>   
       <%= link_to category_posts_path(category) do %>
