@@ -1,28 +1,39 @@
-<%= form_with model: post ,class:"form_box" do |form| %>
+<%= form_with model: post ,class:"form_box",id:"form_box-form" do |form| %>
+
   <%= form.text_field :title ,placeholder:"タイトル",class:"form_box__title" %>
   <% if request.path_info == "/posts/new" %>  
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body",value:@template %>
   <% else %>  
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body"%>
-  <% end %>  
-  <% if post.images.present? %>
-    <div class="post__bottom__images">
-      <% post.images.each do |image,index| %>
-        <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}"%> 
-      <% end %>
-    </div>
-  <% end %>
-  <div class="form_box__input">
+  <% end %> 
+
+  <div class="post__bottom__images" id="post-images-view"> 
+    <% if post.images.present? %>
+        <% index = 0 %>
+        <% post.images.each do |image| %>
+          <div class="post__bottom__images__view" >
+            <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}",width:"300px",height:"300px"%> 
+            <input multiple="multiple" type="hidden" name="box[]" value="<%= index %>" />  
+            <div class="bottun-close-org">✖︎</div>
+          </div>
+          <% index += 1 %>
+        <% end %>
+    <% end %>
+  </div>
+
+  <div class="form_box__input" id="image_input">
     <%= fa_icon("image") %>
     <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
   </div>
   <% if post.video_url.present? %>
     <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
   <% end %>
+
   <div class="form_box__input">
     <%= fa_icon("play-circle") %>
     <%= form.file_field :video %>
   </div>
+
   <%= form.select :category_id, categories.map{|t| [t.name, t.id]} ,prompt:"カテゴリを選択してください"%>
   <%= form.select :status, ["open","closed"], :prompt => "ステータスを選択してください"%>
   <%= form.submit class:"form_box__submit" %>
