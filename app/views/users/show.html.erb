@@ -8,6 +8,7 @@
     <% @posts.each do |post| %>  
       <%= render partial: "/posts/post",locals:{ post: post} %>
     <% end %>
+    <%= paginate @posts %>
   <% else %>
     <div class="message">
       <p>まだ投稿がありません</p>
