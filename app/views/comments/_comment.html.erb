@@ -1,5 +1,5 @@
   <% comments.each do |comment|%>
-    <div class="balloon5">
+    <div class="balloon5 clearfix">
       <%if comment.user_id != comment.post.user_id%>
         <div class="faceicon">
           <%= image_tag "#{comment.user.image}"%>
@@ -34,8 +34,7 @@
             <% end %>
           </div>
         </div>
-
-        </div>
+      </div>
       </div>
       <%if comment.user_id == comment.post.user_id%>
         <div class="faceicon-self">
