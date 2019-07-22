@@ -1,0 +1,45 @@
+  <% comments.each do |comment|%>
+    <div class="balloon5 clearfix">
+      <%if comment.user_id != comment.post.user_id%>
+        <div class="faceicon">
+          <%= image_tag "#{comment.user.image}"%>
+        </div>
+      <% end %>
+
+      <div class="chatting">
+        <%if comment.user_id == comment.post.user_id%>
+          <div class="says-self">
+        <% else %>
+          <div class="says">
+        <% end %>
+        <%= safe_join(comment.body.split("\n"), tag(:br))%>
+        <% if comment.image.present? %>
+          <%= image_tag "#{comment.image}",class:"comment__image"%>     
+        <% end %>
+
+        <div class="comment__info">
+          <div class="comment__info__time"> 
+            <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+          <div class="comment__info__name"> 
+            <%= link_to user_path(comment.user) do %>   
+              投稿者：<%= comment.user.name %>さん
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.id == comment.user_id %>  
+                <%= link_to post_comment_path(comment.post,comment),method: :delete do %>   
+                  　<%= fa_icon("trash") %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      </div>
+      <%if comment.user_id == comment.post.user_id%>
+        <div class="faceicon-self">
+          <%= image_tag "#{comment.user.image}"%>
+        </div>
+      <% end %>
+    </div>
+  <%end%>

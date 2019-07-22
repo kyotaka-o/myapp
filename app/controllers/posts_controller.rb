@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user)
+    @posts = @posts.page(params[:page]).per(10)
     @current_category = Category.find(params[:category_id]).name
   end
 
@@ -27,6 +28,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = Post.find(params[:id]).comments.order("created_at ASC").includes(:user,:post)
+    @comment = Comment.new
   end
 
   def edit
@@ -47,7 +50,7 @@ class PostsController < ApplicationController
 
     if @post.update(update_params)
       respond_to do |format|
-        format.html {redirect_to post_path(post_path(params[:id]))} 
+        format.html {redirect_to post_path(params[:id])} 
         format.json 
       end
     else

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'categories#index'
-  resources :posts,except:[:index]
+  resources :posts,except:[:index] do
+    resources :comments,only:[:create,:destroy]
+  end
   resources :users,only:[:index,:show]
   resources :categories do
     resources :posts,only:[:index]
