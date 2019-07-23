@@ -1,7 +1,7 @@
 <div class="main-contents">
   <div  class="subject">
     <p>
-      <%= icon('fas', 'user-astronaut') %><%= @user.name %>さんの投稿一覧
+      <%= icon('fas', 'user-astronaut') %><%= @user.name %>さんの投稿一覧 <%= icon('fas', 'pencil-alt') %>
     </p>
   </div>
   <div class="posts">
@@ -18,3 +18,24 @@
   </div>
 </div>
 <%= paginate @posts %>
+
+<div class="main-contents">
+  <div  class="subject">
+    <p>
+      <%= icon('fas', 'user-astronaut') %><%= @user.name %>さんのお気に入り一覧<%= icon('fas', 'star') %>
+    </p>
+  </div>
+  <div class="posts">
+    <% if @favorite_posts.present? %>
+      <% @favorite_posts.each do |post| %>  
+        <%= render partial: "/posts/post",locals:{ post: post} %>
+      <% end %>
+      
+    <% else %>
+      <div class="message">
+        <p>まだお気に入りがありません</p>
+      </div> 
+    <% end %>
+  </div>
+</div>
+<%= paginate @favorite_posts %>

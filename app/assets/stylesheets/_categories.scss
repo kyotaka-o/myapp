@@ -1,7 +1,7 @@
 .categories{
   @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
   @include ele-size(90%,);
-  margin: 30px auto;
+  margin: 10px auto;
   padding-bottom:15px;
   background-color: $mainBlueColor;
   color: aliceblue;

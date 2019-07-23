@@ -11,4 +11,22 @@
   </div> 
 </div> 
 
-
+<div class="main-contents">
+  <div  class="subject">
+    <p>
+      <%= icon('fas', 'fish') %>新着投稿20件
+    </p>
+  </div>
+  <div class="posts">
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>  
+        <%= render partial: "/posts/post",locals:{ post: post} %>
+      <% end %>
+      
+    <% else %>
+      <div class="message">
+        <p>まだ投稿がありません</p>
+      </div> 
+    <% end %>
+  </div>
+</div>

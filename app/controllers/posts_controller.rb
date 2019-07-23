@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :find_post, only:[:show,:edit,:update,:destroy]
   before_action :make_template, only:[:new]
+  before_action :find_favorite, only:[:show],if: :user_signed_in?
+  before_action :find_favorites, only:[:index],if: :user_signed_in?
 
   def index
-    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user)
-    @posts = @posts.page(params[:page]).per(10)
+    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user).page(params[:page]).per(10)
     @current_category = Category.find(params[:category_id]).name
   end
 
@@ -72,6 +73,11 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def find_favorite
+    @favorite = Favorite.find_by_sql(['select * from favorites where (post_id = ?) and (user_id = ?)', params[:id],current_user.id])
+
   end
 
   def add_more_images(new_images)
