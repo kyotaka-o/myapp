@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :find_favorites, only:[:index],if: :user_signed_in?
 
   def index
-    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user).page(params[:page]).per(10)
+    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
     @current_category = Category.find(params[:category_id]).name
   end
 

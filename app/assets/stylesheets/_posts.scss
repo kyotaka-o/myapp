@@ -5,7 +5,7 @@
   }
   .post{
     margin: 30px auto;
-    @include ele-size(90%,120px);
+    @include ele-size(95%,120px);
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
     &__left{
       @include ele-size(120px,100%);
@@ -66,8 +66,16 @@
           text-align: center;
           display: inline-block;
           float: right;
-          width: 70px;
+          width: 50px;
           opacity: 0.8;
+          margin-right: 10px;
+        }
+        &__category{
+          display: inline-block;
+          float: right;
+          padding: 0 10px;
+          @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
+          margin-right:10px;
         }
       }
     }
@@ -83,7 +91,7 @@
     }
     &__bottom{
       word-wrap: break-word;
-      @include ele-size(90%,);
+      @include ele-size(95%,);
       margin: 0 auto 30px;
       padding: 10px;
       min-height: 300px;

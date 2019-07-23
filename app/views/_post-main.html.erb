@@ -72,5 +72,14 @@
       </div>
     <% end %>
 
+    <% if request.path_info == "/posts/#{post.id}" %>   
+      <%= link_to category_posts_path(post.category),class:"post__right__info__category" do %>
+        <%= post.category.name %>  
+      <% end %>
+    <% else %>
+      <div class="post__right__info__category"> 
+        <%= post.category.name %>
+      </div>
+    <% end %>
   </div>
 </div>

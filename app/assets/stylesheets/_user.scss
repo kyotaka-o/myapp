@@ -63,6 +63,10 @@
     display: inline-block;
     margin: 25px;
     text-align: center;
+    padding: 10px 5px;
+    &__bottom{
+      margin-top:10px;
+    }
     &:hover{
       opacity: 0.8;
     }
@@ -107,4 +111,16 @@
 
 
   }
+}
+
+.user-show{
+  margin:30px auto;
+  min-height: 0;
+  width:95%;
+  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
+}
+.user-page{
+  background-color: white;
+  @include border-info((none),(none),0px);
+  color: black;
 }

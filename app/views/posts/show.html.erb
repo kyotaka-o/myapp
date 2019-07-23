@@ -32,15 +32,21 @@
       <%= "コメント一覧" %>
       </p>
     </div>
-    <% if user_signed_in? %>
-      <div class="comments__input">
+
+    <div class="comments__input">
+      <% if user_signed_in? %>
         <%= form_with model: [@post, @comment], local:true do |form| %> 
         <%= form.text_area :body,placeholder:"コメント",class:"comments__input__body"%>
         <%= form.file_field :image %>
         <%= form.submit "送信" ,class:"comments__input__submit" %>
         <% end %>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="message">
+          <p>投稿するにはログインしてください</p>
+        </div> 
+      <% end %>
+    </div>
+
     <%= render partial: "./comments/comment",locals:{ comments: @comments} %>
   </div>
 </div>
