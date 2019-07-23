@@ -12,10 +12,24 @@ body,html{
     color:  white;
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),2px);
   } 
+  & .fas{
+    font-size:30px;
+  }
+}
+.fas{
+  font-size:20px;
 }
 .theme__logo{
   margin-right: 10px;
 }
+a{
+  // color: $borderGrayColor;
+  &:hover{
+    color: #039be5;
+  }
+
+}
+
 .theme{
   @include ele-size(100%,300px);
   background: url(bg.jpg), linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);
@@ -134,10 +148,10 @@ div.stage{
   
   &__center{
     margin: 10px 0;
-    background-color:  white;
-    @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
+    
+    
     float: left;
-    min-height: 300px;
+
     width: 60%;
   }
   
@@ -148,4 +162,11 @@ div.stage{
     position: sticky;
     top: 10px;
   }
+}
+.main-contents{
+  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
+  background-color:  white;
+  min-height: 300px;
+  width: 100%;
+
 }

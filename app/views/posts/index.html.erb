@@ -1,17 +1,19 @@
-<div  class="subject">
-  <p>
-  <%= fa_icon("bars") %>
-  <%= @current_category %>
-  </p>
- </div> 
-<div class="posts">
-  <% if @posts.present? %>
-    <%= render @posts %>
-    <%= paginate @posts %>
-  <% else %>
-    <div class="message">
-      <p>まだ投稿がありません</p>
-    </div> 
-  <% end %>
+<div class="main-contents">
+  <div  class="subject">
+    <p>
+    <%= icon('fas', 'bars')%>
+    <%= @current_category %>
+    </p>
+  </div> 
+  <div class="posts">
+    <% if @posts.present? %>
+      <%= render @posts %>
+    <% else %>
+      <div class="message">
+        <p>まだ投稿がありません</p>
+      </div> 
+    <% end %>
+  </div>
 </div>
+<%= paginate @posts %>
  
