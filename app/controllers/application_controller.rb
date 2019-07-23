@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :create_theme
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name,:image])
   end
 
   def create_theme

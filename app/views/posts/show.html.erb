@@ -1,44 +1,47 @@
-<div  class="subject">
-  <p>
-  <%= icon('fas', 'book-dead')%> 
-  <%= "詳細" %>
-  </p>
-</div>
-<div class="posts">
-  <div class="post post--show">
-    <%= render partial: "/post-main",locals:{ post: @post} %>
+
+<div class="main-contents">
+  <div  class="subject">
+    <p>
+    <%= icon('fas', 'book-dead')%> 
+    <%= "詳細" %>
+    </p>
   </div>
-  <div class="post__bottom">     
-    <%= sanitize markdown(@post.body) %>
-    <% if @post.images.present? %>
-      <div class="post__bottom__images">
-        <% @post.images.each do |image| %>
-          <%= image_tag "#{image}",class:"post__bottom__images__image" %>     
+  <div class="posts">
+    <div class="post post--show">
+      <%= render partial: "/post-main",locals:{ post: @post} %>
+    </div>
+    <div class="post__bottom">     
+      <%= sanitize markdown(@post.body) %>
+      <% if @post.images.present? %>
+        <div class="post__bottom__images">
+          <% @post.images.each do |image| %>
+            <%= image_tag "#{image}",class:"post__bottom__images__image" %>     
+          <% end %>
+        </div>
+      <% end %>
+      <% if @post.video_url.present? %>
+        <%= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="comments">
+    <div  class="subject">
+      <p>
+      <%= icon('fas', 'comment')%> 
+      <%= "コメント一覧" %>
+      </p>
+    </div>
+    <% if user_signed_in? %>
+      <div class="comments__input">
+        <%= form_with model: [@post, @comment], local:true do |form| %> 
+        <%= form.text_area :body,placeholder:"コメント",class:"comments__input__body"%>
+        <%= form.file_field :image %>
+        <%= form.submit "送信" ,class:"comments__input__submit" %>
         <% end %>
       </div>
     <% end %>
-    <% if @post.video_url.present? %>
-      <%= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
-    <% end %>
+    <%= render partial: "./comments/comment",locals:{ comments: @comments} %>
   </div>
-</div>
-
-<div class="comments">
-  <div  class="subject">
-    <p>
-    <%= icon('fas', 'comment')%> 
-    <%= "コメント一覧" %>
-    </p>
-  </div>
-  <% if user_signed_in? %>
-    <div class="comments__input">
-      <%= form_with model: [@post, @comment], local:true do |form| %> 
-      <%= form.text_area :body,placeholder:"コメント",class:"comments__input__body"%>
-      <%= form.file_field :image %>
-      <%= form.submit "送信" ,class:"comments__input__submit" %>
-      <% end %>
-    </div>
-  <% end %>
-  <%= render partial: "./comments/comment",locals:{ comments: @comments} %>
 </div>
 

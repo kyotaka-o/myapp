@@ -1,9 +1,10 @@
+<div class="main-contents">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
-    <%= f.label :name %> <em>(6 characters maximum)</em><br />
+    <%= f.label :name %> <em>(最大6文字)</em><br />
     <%= f.text_field :name, autofocus: true, maxlength: "6" %>
   </div>
 
@@ -21,7 +22,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -35,4 +36,5 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</div>
 
