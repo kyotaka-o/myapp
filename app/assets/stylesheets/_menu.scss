@@ -1,0 +1,24 @@
+.menu{
+  text-align: center;
+  margin: 50px auto;
+  padding:10px;
+  & button,a{
+    border: none;
+    background-color: rgb(240, 238, 238);
+    color: black;
+    & :hover{
+      color:$hoverGreenColor;
+      opacity: 0.8;
+
+    }
+  }
+  & .fas{
+    font-size: 2.5vw;
+
+  }
+
+  &__mid{
+    margin:10px;
+
+  }
+}

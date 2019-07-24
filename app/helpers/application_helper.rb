@@ -18,4 +18,12 @@ module ApplicationHelper
       renderer = RougeConfig::RougeRender.new(render_options)
       Redcarpet::Markdown.new(renderer, extensions).render(text)
     end
+    def search_favorite(favorites,post)
+      favorites.each do |favorite| 
+        if favorite.post_id == post.id
+          return true
+        end
+      end
+      return false
+    end
 end

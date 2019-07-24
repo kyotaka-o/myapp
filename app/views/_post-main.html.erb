@@ -43,6 +43,43 @@
     <% end %>
       <%= post.status %>
     </div>
-  </div>
 
+    <% if user_signed_in? %>
+      <div class="post__right__info__favo" id="favorites"> 
+      <% if request.path_info == "/posts/#{post.id}" %> 
+        <% if @favorite.present?   %>
+          <%= link_to post_favorite_path(post),class:"favo-on" do %>
+            <%= icon('fas', 'star')%>    
+          <% end %>
+        <%else%>
+          <%= link_to post_favorite_path(post),class:"favo-off" do %>
+            <%= icon('fas', 'star')%>    
+          <% end %>
+        <% end %>
+      <%else%>
+        <% flag =false %>
+        <% flag = search_favorite(@favorites,post) %>
+        <% if flag == true %>
+          <div class="favo-on-show">
+            <%= icon('fas', 'star')%> 
+          </div> 
+        <% else %>
+          <div class="favo-off-show">
+            <%= icon('fas', 'star')%> 
+          </div> 
+        <% end %>
+      <% end %>
+      </div>
+    <% end %>
+
+    <% if request.path_info == "/posts/#{post.id}" %>   
+      <%= link_to category_posts_path(post.category),class:"post__right__info__category" do %>
+        <%= post.category.name %>  
+      <% end %>
+    <% else %>
+      <div class="post__right__info__category"> 
+        <%= post.category.name %>
+      </div>
+    <% end %>
+  </div>
 </div>

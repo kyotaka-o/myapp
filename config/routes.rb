@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'categories#index'
   resources :posts,except:[:index] do
     resources :comments,only:[:create,:destroy]
+    resources :favorites,only:[:create,:destroy]
   end
   resources :users,only:[:index,:show]
   resources :categories do

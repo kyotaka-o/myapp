@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     @ranking = ids.map{|user_id| User.find(user_id)}
     @counts = ids.map{|id| Post.where(user_id:id).count}
   end
+
+  def find_favorites
+    @favorites = current_user.favorites
+  end
 end
