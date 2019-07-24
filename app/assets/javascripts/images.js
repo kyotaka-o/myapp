@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() { 
   function buildHTML(input,index) {
     var html = `<div class="post__bottom__images__view" >
-                  <img src="${input}" class="post__bottom__images__image" width="300px" height="300px" >
+                  <img src="${input}" class="post__bottom__images__image" height="300px" >
                   <div class="bottun-close" data-add-img-num="${index}">✖︎</div>
                  </div> `
     return html;

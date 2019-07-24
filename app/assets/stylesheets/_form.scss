@@ -38,3 +38,16 @@ select {
     border-radius: 15px;
   }
 }
+.post__bottom__video__view{
+
+  .bottun-close-video{
+    display: block;
+    background-color: #039be5;
+    color: white;
+    cursor: pointer;
+    @include ele-size(30px,30px);
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+  }
+}

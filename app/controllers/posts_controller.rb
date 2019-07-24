@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     @post = Post.new(post_params)
     if params[:image] != nil
       add_more_images(image_params[:images])
@@ -41,6 +42,12 @@ class PostsController < ApplicationController
     if @post.images != nil
       remove_image_at_index
     end
+
+    if @post.video != nil
+      if params[:current_video] == nil
+        remove_video
+      end
+    end   
 
     update_params = post_params
 
@@ -115,6 +122,11 @@ class PostsController < ApplicationController
       @post.images = remain_images
     end
   end
+
+  def remove_video
+    @post.remove_video!
+  end
+
   def make_template
     @template = "#### どんなエラー？\r"+"***\r\r"+"#### どんな環境？\r"+"***\r\r"+"#### どうやって解決した？\r"+"***\r\r"
   end

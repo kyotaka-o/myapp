@@ -162,7 +162,7 @@ div.stage{
   }
 }
 .main-contents{
-  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
+  @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),5px);
   background-color:  white;
   min-height: 300px;
   width: 100%;

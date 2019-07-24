@@ -20,7 +20,7 @@
         <% end %>
         <%= safe_join(comment.body.split("\n"), tag(:br))%>
         <% if comment.image.present? %>
-          <%= image_tag "#{comment.image}",class:"comment__image"%>     
+          <%= image_tag "#{comment.image}",class:"comment__image mordal-image"%>     
         <% end %>
 
         <div class="comment__info">

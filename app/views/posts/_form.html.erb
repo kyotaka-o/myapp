@@ -12,7 +12,7 @@
         <% index = 0 %>
         <% post.images.each do |image| %>
           <div class="post__bottom__images__view" >
-            <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}",width:"300px",height:"300px"%> 
+            <%= image_tag "#{image}",class:"post__bottom__images__image" ,id:"image-#{index}",height:"300px"%> 
             <input multiple="multiple" type="hidden" name="box[]" value="<%= index %>" />  
             <div class="bottun-close-org">✖︎</div>
           </div>
@@ -26,7 +26,11 @@
     <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
   </div>
   <% if post.video_url.present? %>
-    <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+    <div class="post__bottom__video__view" >
+      <div class="bottun-close-video">✖︎</div>
+      <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 300, id: "mv"%>   
+      <input type="hidden" name="current_video" value="1" /> 
+    </div>
   <% end %>
 
   <div class="form_box__input">

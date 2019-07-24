@@ -3,6 +3,7 @@
   .fa{
     font-size: 20px;
   }
+
   .post{
     margin: 30px auto;
     @include ele-size(95%,120px);
@@ -103,6 +104,13 @@
         flex-wrap: wrap;
         &__image{
           margin: 30px;
+        }
+      }
+      &__video{
+        text-align: center;
+        margin: 10px auto;
+        & video{
+
         }
       }
     }
