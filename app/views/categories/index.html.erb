@@ -5,10 +5,16 @@
     <%= "お知らせ" %>
     </p>
   </div>
-  <div class="message">
-    <p>〜工事中〜</p>
-    <p>〜ちょっと待ってね〜</p>
-  </div> 
+  <% if @infomations.present? %>
+    <div class="infomations">
+      <%= render partial: "infomations",locals:{ infomations: @infomations} %>
+    </div>   
+  <% else %>
+    <div class="message">
+      <p>〜工事中〜</p>
+      <p>〜ちょっと待ってね〜</p>
+    </div> 
+  <% end %>
 </div> 
 
 <div class="main-contents">

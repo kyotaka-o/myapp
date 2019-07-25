@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC").limit(20).includes(:user)
+    @infomations = Infomation.all.order("created_at DESC")
   end
 
 end

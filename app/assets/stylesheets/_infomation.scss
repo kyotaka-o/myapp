@@ -1,0 +1,17 @@
+.infomations{
+  width: 90%;
+  margin: 15px auto;
+  overflow: scroll;
+  height: 300px;
+}
+
+.infomation{
+  color:$borderGrayColor;
+  font-size: 18px;
+  border-bottom: 1px solid $borderGrayColor;
+  margin:5px 0;
+  text-align: left;
+  width: 100%;
+
+  
+}

@@ -1,0 +1,5 @@
+<% infomations.each do |info|%>
+  <div class="infomation" >
+    <p><%= info.created_at.strftime("%Y/%m/%d %H:%M") %>：<%= info.content %></p>
+  </div>
+<% end %>
