@@ -5,8 +5,19 @@ class PostsController < ApplicationController
   before_action :find_favorites, only:[:index],if: :user_signed_in?
 
   def index
-    @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
-    @current_category = Category.find(params[:category_id]).name
+    @current_category = Category.find(params[:category_id])
+    # binding.pry
+    if params[:search_status] == "open"
+      @posts = Category.find(params[:category_id]).posts.where(status:"open").order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @status = "open"
+    elsif params[:search_status] == "closed"
+      @posts = Category.find(params[:category_id]).posts.where(status:"closed").order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @status = "closed"
+    else
+      @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @status = ""
+    end
+
   end
 
   def new
@@ -14,6 +25,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     @post = Post.new(post_params)
     if params[:image] != nil
       add_more_images(image_params[:images])
@@ -41,6 +53,12 @@ class PostsController < ApplicationController
     if @post.images != nil
       remove_image_at_index
     end
+
+    if @post.video != nil
+      if params[:current_video] == nil
+        remove_video
+      end
+    end   
 
     update_params = post_params
 
@@ -115,6 +133,11 @@ class PostsController < ApplicationController
       @post.images = remain_images
     end
   end
+
+  def remove_video
+    @post.remove_video!
+  end
+
   def make_template
     @template = "#### どんなエラー？\r"+"***\r\r"+"#### どんな環境？\r"+"***\r\r"+"#### どうやって解決した？\r"+"***\r\r"
   end

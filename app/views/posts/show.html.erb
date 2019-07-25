@@ -15,12 +15,14 @@
       <% if @post.images.present? %>
         <div class="post__bottom__images">
           <% @post.images.each do |image| %>
-            <%= image_tag "#{image}",class:"post__bottom__images__image" %>     
+            <%= image_tag "#{image}",class:"post__bottom__images__image mordal-image", width: 300 %>     
           <% end %>
         </div>
       <% end %>
       <% if @post.video_url.present? %>
-        <%= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+        <div class="post__bottom__video ">
+          <%= video_tag @post.video_url.to_s,loop: true, controls: true, width: 400, id: "mv"%>
+        </div>
       <% end %>
     </div>
   </div>
