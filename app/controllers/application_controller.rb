@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def create_theme
     @cube_elements = ["front","back","left","right","top","bottom"]
     @random_categories = Category.order("random()").limit(6)
-    @categories = Category.all
+    @categories = Category.all.order('id ASC')
 
     ids= Post.group(:user_id).order('count_user_id DESC').limit(5).count(:user_id).keys
     @ranking = ids.map{|user_id| User.find(user_id)}
