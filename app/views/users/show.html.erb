@@ -34,7 +34,18 @@
       投稿一覧 <%= icon('fas', 'pencil-alt') %>
     </p>
   </div>
-  <div class="posts" style=display:none>
+  <div class="posts">
+    <%= form_with  url:user_path(@user) ,method: :get,local: true do |form| %>
+      <div class="show-search-select">
+        <%= form.label :search_status, 'ステータス' %>
+        <%= form.select :search_status, ["all","open","closed"],selected:"#{@status}" %>
+      </div>
+      <div class="show-search-select">
+        <%= form.label :category_name, 'カテゴリー' %>
+        <%= form.select :category_name, @category_names.map{|t| [t]} ,selected:"#{@category}"%>
+      </div>
+      <%= form.submit "フィルタリング" ,class:"show-search-submit" %>
+    <% end %>
     <% if @posts.present? %>
       <% @posts.each do |post| %>  
         <%= render partial: "/posts/post",locals:{ post: post} %>
@@ -46,8 +57,8 @@
     <% end %>
   </div>
 </div>
-<div class="page-show" style=display:none > 
-<%= paginate @posts %>
+<div class="page-show" > 
+<%= paginate @posts ,param_name:"show_user" %>
 </div>
 
 <div class="user-show">
@@ -57,7 +68,19 @@
       お気に入り一覧<%= icon('fas', 'star') %>
     </p>
   </div>
-  <div class="posts" style=display:none>
+  <div class="posts">
+    <%= form_with  url:user_path(@user) ,method: :get,local: true do |form| %>
+      <div class="show-search-select">
+        <%= form.label :favo_search_status, 'ステータス' %>
+        <%= form.select :favo_search_status, ["all","open","closed"],selected:"#{@favo_status}" %>
+      </div>
+      <div class="show-search-select">
+        <%= form.label :favo_category_name, 'カテゴリー' %>
+        <%= form.select :favo_category_name, @category_names.map{|t| [t]} ,selected:"#{@favo_category}"%>
+      </div>
+      <%= form.submit "フィルタリング" ,class:"show-search-submit" %>
+
+    <% end %>
     <% if @favorite_posts.present? %>
       <% @favorite_posts.each do |post| %>  
         <%= render partial: "/posts/post",locals:{ post: post} %>
@@ -70,6 +93,7 @@
     <% end %>
   </div>
 </div>
-<%= paginate @favorite_posts %>
-
+<div class="page-show" > 
+<%= paginate @favorite_posts ,param_name:"show_favo" %>
+</div>
 </div>

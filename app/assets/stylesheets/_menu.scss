@@ -5,7 +5,7 @@
   & button,a{
     border: none;
     background-color: rgb(240, 238, 238);
-    color: black;
+    color: $borderGrayColor;
     & :hover{
       color:$hoverGreenColor;
       opacity: 0.8;

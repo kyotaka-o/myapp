@@ -124,3 +124,12 @@
   @include border-info((none),(none),0px);
   color: black;
 }
+.show-search-submit{
+  display:block;
+  margin: 10px auto;
+}
+
+.show-search-select{
+  display:block;
+  margin: 10px 30px;
+}
