@@ -18,5 +18,6 @@ class ApplicationController < ActionController::Base
 
   def find_favorites
     @favorites = current_user.favorites
+    @all_favorites = Favorite.all
   end
 end

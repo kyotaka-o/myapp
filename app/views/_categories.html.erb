@@ -1,9 +1,11 @@
 
 <div class="categories">
-  <p>
-    <%= icon('fas', 'bars')%>
-    カテゴリ一覧
-  </p>
+  <div class="categories-bottun">
+    <p>
+      <%= icon('fas', 'bars')%>
+      カテゴリ一覧
+    </p>
+  </div>
   <% categories.each do |category| %>   
     <%= link_to category_posts_path(category) do %>
       <div class="category">

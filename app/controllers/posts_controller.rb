@@ -95,7 +95,7 @@ class PostsController < ApplicationController
 
   def find_favorite
     @favorite = Favorite.find_by_sql(['select * from favorites where (post_id = ?) and (user_id = ?)', params[:id],current_user.id])
-
+    @favorite_all = Favorite.find_by_sql(['select * from favorites where (post_id = ?)', params[:id]]).count
   end
 
   def add_more_images(new_images)

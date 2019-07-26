@@ -14,6 +14,11 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(date){
+      current_num = $('#favorites p').text();
+      // console.log(p)
+      current_num = Number(current_num);
+      current_num = current_num + 1
+      $('#favorites p').text(current_num);
       $('#favorites a').removeClass("favo-off");
       $('#favorites a').addClass("favo-on");
     }) 
@@ -33,6 +38,10 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(date){
+      current_num = $('#favorites p').text();
+      current_num = Number(current_num);
+      current_num = current_num - 1
+      $('#favorites p').text(current_num);
       $('#favorites a').removeClass("favo-on");
       $('#favorites a').addClass("favo-off");
     }) 
