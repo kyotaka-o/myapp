@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  root 'categories#index'
+  root 'top#index'
   resources :posts,except:[:index] do
     resources :comments,only:[:create,:destroy]
     resources :favorites,only:[:create,:destroy]

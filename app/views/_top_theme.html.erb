@@ -1,5 +1,5 @@
-<div class="theme">
-  <div class="logo">
+<div class="theme top_theme">
+  <div class="logo logo_style scale-transition scale-out">
     <%= link_to categories_path do %>
       <p>
       <%= image_tag "logo.jpg",class:"theme__logo" %>Erratar
@@ -7,10 +7,10 @@
     <% end %>  
   </div>
   <div class="stage">
-    <div class="cube">
+    <div class="cube_orgin">
       <% i = 0 %>  
       <% cube_elements.each do |element| %> 
-        <div class="<%= element %> " >
+        <div class="<%= element %>" >
           <%= link_to "#{random_categories[i].name}", category_posts_path(random_categories[i]) %>
         </div>
         <% i += 1 %> 

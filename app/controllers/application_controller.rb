@@ -20,4 +20,14 @@ class ApplicationController < ActionController::Base
     @favorites = current_user.favorites
     @all_favorites = Favorite.all
   end
+
+  # ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource_or_scope)
+      categories_path
+  end
+
+  # ログアウト後のリダイレクト先
+  def after_sign_out_path_for(resource_or_scope)
+      categories_path
+  end
 end
