@@ -26,4 +26,14 @@ module ApplicationHelper
       end
       return false
     end
+
+    def count_favorite(favorites,post)
+      count = 0
+      favorites.each do |favorite| 
+        if favorite.post_id == post.id
+          count += 1
+        end
+      end
+      return count
+    end
 end

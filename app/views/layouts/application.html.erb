@@ -12,21 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <%# <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet"> %>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Press+Start+2P&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <% if request.path_info != "/" %> 
     <%= render partial: "/theme",locals:{ cube_elements: @cube_elements, random_categories: @random_categories } %>
 
     <div class="contents clearfix">
 
-      <div class="contents__left">
+      <div class="contents__left ">
         <%= render partial: "/categories",locals:{ categories: @categories } %>
       </div>
 
@@ -36,11 +37,39 @@
 
       <div class="contents__right">
         <%= render partial: "/user" %>
-      <div class="news">
       </div>
     </div>
-  </div>
     <footer>
+    <% if current_user.try(:admin?) %>
+      <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面", "/admin" %></p>
+    <% end %>
     </footer>
+
+  <%else%>
+    <%= render partial: "/top_theme",locals:{ cube_elements: @cube_elements, random_categories: @random_categories } %>
+
+    <div class="contents clearfix dsip_none">
+
+      <div class="contents__left scale-transition scale-out">
+        <%= render partial: "/categories",locals:{ categories: @categories } %>
+      </div>
+
+      <div class="contents__center " style="display:none">
+        <%= yield %>
+      </div>
+
+      <div class="contents__right scale-transition scale-out">
+        <%= render partial: "/user" %>
+      </div>
+    </div>
+    <footer class="scale-transition scale-out">
+    <% if current_user.try(:admin?) %>
+      <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面", "/admin" %></p>
+    <% end %>
+    </footer>
+  <%end%>
+
+
+
   </body>
 </html>

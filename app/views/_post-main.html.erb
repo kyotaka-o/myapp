@@ -20,20 +20,20 @@
     <div class="post__right__info__name"> 
       <% if request.path_info == "/posts/#{post.id}" %>    
         <%= link_to user_path(post.user) do %>   
-          投稿者：<%= post.user.name %>さん
+          <%= icon('fas', 'user-astronaut')%> <%= post.user.name %>さん
         <% end %>
         <% if user_signed_in? %>
           <% if current_user.id == post.user_id %>  
             <%= link_to edit_post_path(post) do %> 
-              　<%= icon('fas', 'edit')%>   
+              <%= icon('fas', 'edit')%>   
             <% end %>
             <%= link_to post_path(post),method: :delete do %>
-              　<%= icon('fas', 'trash')%>    
+              <%= icon('fas', 'trash')%>    
             <% end %>
           <% end %>
         <% end %>
       <% else %>
-        投稿者：<%= post.user.name %>さん
+        <%= icon('fas', 'user-astronaut')%><%= post.user.name %>さん
       <% end %>
     </div>
     <% if post.status == "open" %>
@@ -56,16 +56,17 @@
             <%= icon('fas', 'star')%>    
           <% end %>
         <% end %>
+        <p><%= @favorite_all %></p>
       <%else%>
         <% flag =false %>
         <% flag = search_favorite(@favorites,post) %>
         <% if flag == true %>
           <div class="favo-on-show">
-            <%= icon('fas', 'star')%> 
+            <%= icon('fas', 'star')%><%= count_favorite(@all_favorites,post) %>
           </div> 
         <% else %>
           <div class="favo-off-show">
-            <%= icon('fas', 'star')%> 
+            <%= icon('fas', 'star')%><%= count_favorite(@all_favorites,post) %>
           </div> 
         <% end %>
       <% end %>

@@ -7,7 +7,7 @@
   </div>
   <% if @infomations.present? %>
     <div class="infomations">
-      <%= render partial: "infomations",locals:{ infomations: @infomations} %>
+      <%= render partial: "/categories/infomations",locals:{ infomations: @infomations} %>
     </div>   
   <% else %>
     <div class="message">

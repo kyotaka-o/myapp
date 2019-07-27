@@ -1,19 +1,27 @@
 .fa{
   font-size: 30px ;
 }
+.user-toggle{
+  // visibility: hidden;
+}
 .user{
+  // opacity: 0;
+
   width: 90%;
   @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
   margin: 10px auto;
   text-align: center;
   background-color: $mainBlueColor;
-  color: aliceblue;
+  color: white;
   &__avater{
+    visibility: visible;
+    // opacity: 0.9;
     margin: 10px auto;
     @include ele-size(150px,150px);
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),75px);
     color: $borderGrayColor;
     line-height: 150px;
+    // background-color: rgba(255, 255, 255,1.0);
     background-color: white;
     &__image{
       @include ele-size(150px,150px);
@@ -84,11 +92,32 @@
     }
   }
 }
+.user-ranking-button{
+  text-align: center;
+  margin: 10px auto 0;
+  // padding:10px;
+  color: #ffc402;
+  cursor: pointer;
+  // background-color: $mainBlueColor;
+  & .fas{
+    // background-color: $mainBlueColor;
+    font-size: 2.5vw;
+    // @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),100px);
 
+  }
+  & :hover{
+    color:$hoverGreenColor;
+    opacity: 0.8;
+
+  }
+
+
+}
 .user-ranking{
+  // display: none;
   width: 90%;
   @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
-  margin: 10px auto;
+  margin: 0px auto 5px;
   background-color: $mainBlueColor;
   color: aliceblue;
   padding: 10px;
@@ -100,7 +129,7 @@
     width: 90%;
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
     background-color: white;
-    margin: 20px auto;
+    margin: 10px auto;
     text-align: center;
     &__num{
       text-align: center;

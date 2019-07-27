@@ -1,9 +1,11 @@
 
 <div class="categories">
-  <p>
-    <%= icon('fas', 'bars')%>
-    カテゴリ一覧
-  </p>
+  <div class="categories-bottun">
+    <p>
+      <%= icon('fas', 'bars')%>
+      カテゴリ一覧
+    </p>
+  </div>
   <% categories.each do |category| %>   
     <%= link_to category_posts_path(category) do %>
       <div class="category">
@@ -21,7 +23,7 @@
   </div>
   <div class="menu__mid" >
     <button type="button" onclick="history.back()"><%= icon('fas', 'arrow-circle-left')%></button>
-    <%= link_to root_path do %>
+    <%= link_to categories_path do %>
       <%= icon('fas', 'home')%>
     <% end %>  
     <button type="button" onclick="history.forward()"><%= icon('fas', 'arrow-circle-right')%></button>
