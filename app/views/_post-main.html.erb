@@ -36,13 +36,13 @@
         <%= icon('fas', 'user-astronaut')%><%= post.user.name %>さん
       <% end %>
     </div>
-    <% if post.status == "open" %>
+    <% if post.status.name == "open" %>
       <div class="post__right__info__status post--open"> 
     <% else %>
-      <div class="post__right__info__status post--closed"> 
+     <div class="post__right__info__status post--closed">
     <% end %>
-      <%= post.status %>
-    </div>
+      <%= post.status.name %>
+    </div> 
 
     <% if user_signed_in? %>
       <div class="post__right__info__favo" id="favorites"> 
