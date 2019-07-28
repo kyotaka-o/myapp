@@ -84,6 +84,16 @@ class PostsController < ApplicationController
     redirect_to category_posts_path(@post.category_id)
   end
 
+
+  def search 
+    if params[:q] == nil
+      @q = Post.search(params[:q])
+    else
+      @q = Post.search(search_params)
+    end
+    @posts = @q.result(distinct: true).includes(:user,:category).page(params[:page]).per(10)
+  end
+
   private
   def post_params
     params.require(:post).permit(:title,:body,:category_id,:status,:video).merge(user_id:current_user.id)
@@ -140,6 +150,10 @@ class PostsController < ApplicationController
 
   def make_template
     @template = "#### どんなエラー？\r"+"***\r\r"+"#### どんな環境？\r"+"***\r\r"+"#### どうやって解決した？\r"+"***\r\r"
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
 end
