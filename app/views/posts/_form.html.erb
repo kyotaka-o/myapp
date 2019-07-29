@@ -1,6 +1,6 @@
 <%= form_with model: post ,class:"form_box",id:"form_box-form" do |form| %>
 
-  <%= form.text_field :title ,placeholder:"タイトル",class:"form_box__title" %>
+  <%= form.text_field :title ,placeholder:"*タイトル",class:"form_box__title" %>
   <% if request.path_info == "/posts/new" %>  
     <%= form.text_area :body,placeholder:"内容",class:"form_box__body",value:@template %>
   <% else %>  
@@ -24,6 +24,7 @@
   <div class="form_box__input" id="image_input">
     <%= icon('fas', "image") %>
     <%= form.file_field :images, multiple: true ,name: "post[images][]"%>
+    <span>*最大5件</span>
   </div>
   <% if post.video_url.present? %>
     <div class="post__bottom__video__view" >
@@ -36,9 +37,10 @@
   <div class="form_box__input">
     <%= icon('fas', "video") %>
     <%= form.file_field :video %>
+    <span>*最大1件</span>
   </div>
 
-  <%= form.select :category_id, categories.map{|t| [t.name, t.id]} ,prompt:"カテゴリを選択してください"%>
-  <%= form.select :status, ["open","closed"], :prompt => "ステータスを選択してください"%>
+  <%= form.select :category_id, categories.map{|t| [t.name, t.id]} ,prompt:"*カテゴリを選択してください"%>
+  <%= form.select :status_id, @statuses.map{|t| [t.name, t.id]}, :prompt => "*ステータスを選択してください"%>
   <%= form.submit class:"form_box__submit" %>
 <% end %>

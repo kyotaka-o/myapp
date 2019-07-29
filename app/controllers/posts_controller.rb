@@ -2,26 +2,33 @@ class PostsController < ApplicationController
   before_action :find_post, only:[:show,:edit,:update,:destroy]
   before_action :make_template, only:[:new]
   before_action :find_favorite, only:[:show],if: :user_signed_in?
-  before_action :find_favorites, only:[:index],if: :user_signed_in?
+  before_action :find_favorites, only:[:index,:search],if: :user_signed_in?
 
   def index
     @current_category = Category.find(params[:category_id])
     # binding.pry
     if params[:search_status] == "open"
-      @posts = Category.find(params[:category_id]).posts.where(status:"open").order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.where(status_id:1).order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = "open"
     elsif params[:search_status] == "closed"
-      @posts = Category.find(params[:category_id]).posts.where(status:"closed").order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.where(status_id:2).order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = "closed"
     else
-      @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = ""
     end
+    # if params[:q] == nil
+    #   @q = Post.search(category_id:params[:category_id])
+    # else
+    #   @q = Post.search(search_params.merge(category_id:params[:category_id]))
+    # end
+    # @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
 
   end
 
   def new
     @post = Post.new
+    
   end
 
   def create
@@ -84,9 +91,20 @@ class PostsController < ApplicationController
     redirect_to category_posts_path(@post.category_id)
   end
 
+
+  def search 
+    if params[:q] == nil
+      @q = Post.search(params[:q])
+    else
+      @q = Post.search(search_params)
+    end
+    @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
+
+  end
+
   private
   def post_params
-    params.require(:post).permit(:title,:body,:category_id,:status,:video).merge(user_id:current_user.id)
+    params.require(:post).permit(:title,:body,:category_id,:status_id,:video).merge(user_id:current_user.id)
   end
 
   def find_post
@@ -140,6 +158,10 @@ class PostsController < ApplicationController
 
   def make_template
     @template = "#### どんなエラー？\r"+"***\r\r"+"#### どんな環境？\r"+"***\r\r"+"#### どうやって解決した？\r"+"***\r\r"
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
 end

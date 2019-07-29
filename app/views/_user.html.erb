@@ -55,29 +55,108 @@
 <div class="user-ranking-button">
 <%= icon('fas', 'crown')%>
 </div>
-<div class="user-ranking scale-transition scale-out">
-  <div class="user-ranking__title">
-    <p><%= icon('fas', 'crown')%>ユーザー投稿数ランキング</p>
-  </div> 
-  <% i = 0 %>
-  <div class="user-ranking__boxes">
-    <% @ranking.each do |user| %>
-      <%= link_to user_path(user),method: :GET  do %>
-        <div class="user-ranking__box">
-          <p>
-            <%= "#{i+1}位：#{user.name}さん" %>
-          </p>
-          <div class="user-ranking__box__num">
-            <p>
-              <%= icon('fas', 'pencil-alt')%>
-              <%="#{@counts[i]}件" %>
-            </p>
-          </div> 
+
+
+<div class="ranking-stage scale-transition scale-out">
+  <div class="ranking-cube"> 
+    <div class="front cube-element" >
+      <div class="user-ranking">
+        <div class="user-ranking__title">
+          <p><%= icon('fas', 'pencil-alt')%>ユーザー投稿数ランキング</p>
         </div> 
-      <% end %>
-      <% i += 1 %>
+        <% i = 0 %>
+        <div class="user-ranking__boxes">
+          <% @ranking.each do |user| %>
+            <%= link_to user_path(user),method: :GET  do %>
+              <div class="user-ranking__box">
+                <p>
+                  <%= "#{i+1}位：#{user.name}さん" %>
+                </p>
+                <div class="user-ranking__box__num">
+                  <p>
+                    <%= icon('fas', 'pencil-alt')%>
+                    <%="#{@counts[i]}件" %>
+                  </p>
+                </div> 
+              </div> 
+            <% end %>
+            <% i += 1 %>
 
-    <% end %>
-  </div> 
+          <% end %>
+        </div> 
 
-</div> 
+      </div> 
+    </div>
+    <div class="back cube-element" >
+      <div class="user-ranking">
+        <div class="user-ranking__title">
+          <p><%= icon('fas', 'bars')%>カテゴリ別投稿数ランキング</p>
+        </div> 
+        <% i = 0 %>
+        <div class="user-ranking__boxes">
+          <% @cate_ranking.each do |category| %>
+            <%= link_to category_posts_path(category),method: :GET  do %>
+              <div class="user-ranking__box">
+                <p>
+                  <%= "#{i+1}位：#{category.name}" %>
+                </p>
+                <div class="user-ranking__box__num">
+                  <p>
+                    <%= icon('fas', 'pencil-alt')%>
+                    <%="#{@cate_counts[i]}件" %>
+                  </p>
+                </div> 
+              </div> 
+            <% end %>
+            <% i += 1 %>
+
+          <% end %>
+        </div> 
+
+      </div> 
+    </div>
+    <div class="left cube-element" >
+      <div class="user-ranking">
+        <div class="user-ranking__title">
+          <p><%= icon('fas', 'star')%>お気に入り数ランキング</p>
+        </div> 
+        <% i = 0 %>
+        <div class="user-ranking__boxes">
+          <% @favo_ranking.each do |favo_post| %>
+            <%= link_to post_path(favo_post),method: :GET  do %>
+              <div class="user-ranking__box">
+                <div class="user-ranking__box__title truncate">
+                  <p>
+                    <%= "#{i+1}位：#{favo_post.title}" %>
+                  </p>
+                </div> 
+                <div class="user-ranking__box__num">
+                  <p>                    
+                    <p><%= icon('fas', 'star')%><%="#{@favo_counts[i]}件" %>
+                  </p>
+                </div> 
+              </div> 
+            <% end %>
+            <% i += 1 %>
+
+          <% end %>
+        </div> 
+
+      </div> 
+    </div>
+    <div class="right cube-element" >
+      <div class="user-ranking">
+        <div class="user-ranking__title">
+          <p><%= icon('fas', 'star')%>工事中</p>
+        </div> 
+        <div class="user-ranking__boxes">
+        </div> 
+
+      </div> 
+    </div>
+    <div class="top cube-element" >
+    </div>
+    <div class="bottom cube-element" >
+    </div>
+  </div>
+</div>

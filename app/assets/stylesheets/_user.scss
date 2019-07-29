@@ -97,10 +97,11 @@
   margin: 10px auto 0;
   // padding:10px;
   color: #ffc402;
-  cursor: pointer;
+
   // background-color: $mainBlueColor;
   & .fas{
     // background-color: $mainBlueColor;
+    cursor: pointer;
     font-size: 2.5vw;
     // @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),100px);
 
@@ -113,34 +114,7 @@
 
 
 }
-.user-ranking{
-  // display: none;
-  width: 90%;
-  @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
-  margin: 0px auto 5px;
-  background-color: $mainBlueColor;
-  color: aliceblue;
-  padding: 10px;
-  &__title{
-    text-align: center;
-  }
-  &__box{
-    padding:0 10px;
-    width: 90%;
-    @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),5px);
-    background-color: white;
-    margin: 10px auto;
-    text-align: center;
-    &__num{
-      text-align: center;
-    }
-    &:hover{
-      background-color:$hoverGreenColor;
-    }
 
-
-  }
-}
 
 .user-show{
   margin:30px auto;
@@ -161,4 +135,108 @@
 .show-search-select{
   display:block;
   margin: 10px 30px;
+}
+// .ranking-title{
+//   text-align: center;
+//   color: aliceblue;
+
+// }
+.user-ranking{
+  // display: none;
+  width: 100%;
+  // @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
+  margin: 0px auto 5px;
+  // background-color: $mainBlueColor;
+  color: aliceblue;
+  padding: 10px;
+  &__title{
+    text-align: center;
+    cursor: pointer;
+    & .fas{
+      font-size: 10px;
+    }
+  }
+  &__box{
+    font-size: 10px;
+    padding:0 10px;
+    width: 90%;
+    @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),5px);
+    background-color: white;
+    margin: 10px auto;
+    text-align: center;
+    // overflow: scroll;
+    & .fas{
+      font-size: 10px;
+    }
+    &__num{
+      text-align: center;
+    }
+    &:hover{
+      background-color:$hoverGreenColor;
+    }
+
+
+  }
+}
+div.ranking-stage{
+  position: relative;
+  top:40px;
+  -webkit-perspective: 500;
+  div.ranking-cube{
+      @include ele-size(200px,250px);
+      position: relative;
+      margin: 0 auto;
+      -webkit-transform-style:preserve-3d;
+      -webkit-transition:all 1s;
+      // animation: cuberotator 180s infinite alternate;
+      // &:active{
+      //   -webkit-transform: rotateY(-90deg);
+      // }
+      div.cube-element{
+          @include ele-size(200px,250px);
+          // border: 1px solid $borderGrayColor;
+          @include border-info((2px solid $borderGrayColor),(0px 0px 0px gray),5px);
+          box-sizing: border-box;
+          text-align: center;
+          // line-height: 100px;
+          position: absolute;
+          // background-color: rgba(175, 247, 213, 0.5);
+          background-color: $mainBlueColor;
+          font-size: 10px;
+          
+      }
+      div.front{
+          top: 0;
+          left: 0;
+          -webkit-transform: translateZ(100px);
+      }
+      div.back{
+          top: 0;
+          left: 0;
+          -webkit-transform: translateZ(-100px) rotateY(180deg);
+      }
+      div.left{
+          top: 0;
+          left: 100px;
+          -webkit-transform:rotateY(90deg);
+
+      }
+      div.right{
+          top: 0;
+          right: 100px;
+          -webkit-transform:rotateY(-90deg);
+      }
+      div.top{
+          height: 200px;
+          top: 150px;
+          left: 0;
+          -webkit-transform:rotateX(90deg) rotateY(180deg);
+      }
+      div.bottom{
+          height: 200px;
+          bottom: 150px;
+          left: 0;
+          -webkit-transform:rotateX(-90deg) rotateY(180deg);
+      }
+  }
 }

@@ -1,0 +1,45 @@
+
+<div class="main-contents">
+  <div  class="subject">
+    <p>
+    <%= icon('fas', 'search')%>検索
+    </p>
+  </div> 
+  <div class="posts">
+    <div class="search">
+      <%= search_form_for(@q, url:search_path) do |form| %>
+        <div class="search__box">
+          <div class="search__icon">
+            <%= icon('fas', 'search')%> 
+          </div>     
+          <div class="search__input__box">   
+            <%= form.label :title_or_body_cont, 'キーワード入力'%>
+            <%= form.search_field :title_or_body_cont %>
+          </div> 
+        </div>
+        <div class="search-select">
+          <%= form.label :status_id_eq, 'ステータス' %>
+          <%= form.collection_select :status_id_eq, @statuses, :id, :name, :include_blank => '指定なし' %>
+        </div>     
+        <div class="search-select">
+          <%= form.label :category_id_eq, 'カテゴリー' %>
+          <%= form.collection_select :category_id_eq, @categories, :id, :name, :include_blank => '指定なし' %>
+        </div>
+        <%= form.submit "検索" ,class:"show-search-submit" %>
+      <%end%>
+    <%= sort_link(@q, :created_at, "投稿順") %>
+    </div>
+    <% if @posts.present? %>
+     <% @posts.each do |post|   %>
+        <%= render partial: "/posts/post",locals:{ post: post} %>
+      <% end %>
+    <% else %>
+      <div class="message">
+        <p>一致する投稿が見つかりません</p>
+      </div> 
+    <% end %>
+  </div>
+</div>
+<%= paginate @posts %>
+ 
+
