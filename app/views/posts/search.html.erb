@@ -27,6 +27,7 @@
         </div>
         <%= form.submit "検索" ,class:"show-search-submit" %>
       <%end%>
+    <%= sort_link(@q, :created_at, "投稿順") %>
     </div>
     <% if @posts.present? %>
      <% @posts.each do |post|   %>
@@ -39,6 +40,6 @@
     <% end %>
   </div>
 </div>
-<%# <%= paginate @posts %> 
+<%= paginate @posts %>
  
 

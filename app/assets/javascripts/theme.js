@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function() {
 
 
   var cube_position_back = function(){
+    $('.cube_orgin div').css("background-color","rgba(175, 247, 213, 0.5)");
     $('.cube_orgin').css("width","100px");
     $('.cube_orgin').css("height","100px");
     $('.cube_orgin div').css("width","100px");

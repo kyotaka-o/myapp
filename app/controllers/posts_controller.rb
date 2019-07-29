@@ -17,6 +17,12 @@ class PostsController < ApplicationController
       @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = ""
     end
+    # if params[:q] == nil
+    #   @q = Post.search(category_id:params[:category_id])
+    # else
+    #   @q = Post.search(search_params.merge(category_id:params[:category_id]))
+    # end
+    # @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
 
   end
 
@@ -92,7 +98,8 @@ class PostsController < ApplicationController
     else
       @q = Post.search(search_params)
     end
-    @posts = @q.result.includes(:user,:category,:status)
+    @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
+
   end
 
   private
