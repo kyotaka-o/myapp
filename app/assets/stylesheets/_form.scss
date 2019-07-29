@@ -20,6 +20,9 @@ select {
     display: block;
     margin: 10px auto;
   }
+  & span{
+    color: gray;
+  }
 }
 
 .post__bottom__images__view{

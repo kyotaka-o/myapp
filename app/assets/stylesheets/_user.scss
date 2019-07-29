@@ -151,6 +151,7 @@
   padding: 10px;
   &__title{
     text-align: center;
+    cursor: pointer;
     & .fas{
       font-size: 10px;
     }
@@ -163,6 +164,10 @@
     background-color: white;
     margin: 10px auto;
     text-align: center;
+    // overflow: scroll;
+    & .fas{
+      font-size: 10px;
+    }
     &__num{
       text-align: center;
     }
@@ -198,6 +203,7 @@ div.ranking-stage{
           // background-color: rgba(175, 247, 213, 0.5);
           background-color: $mainBlueColor;
           font-size: 10px;
+          
       }
       div.front{
           top: 0;
@@ -213,6 +219,7 @@ div.ranking-stage{
           top: 0;
           left: 100px;
           -webkit-transform:rotateY(90deg);
+
       }
       div.right{
           top: 0;

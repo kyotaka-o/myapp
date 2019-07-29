@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   has_many :users, through: :favorites
   mount_uploaders :images, ImageUploader
   mount_uploader :video, VideoUploader
+
+  validates :title, presence: true
+  validates :images,    length: { maximum: 5 }  
 end
