@@ -94,9 +94,9 @@ class PostsController < ApplicationController
 
   def search 
     if params[:q] == nil
-      @q = Post.search(params[:q])
+      @q = Post.ransack(params[:q])
     else
-      @q = Post.search(search_params)
+      @q = Post.ransack(search_params)
     end
     @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
 
