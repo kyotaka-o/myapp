@@ -8,7 +8,6 @@ class PostsController < ApplicationController
 
   def index
     @current_category = Category.find(params[:category_id])
-    # binding.pry
     if params[:search_status] == "open"
       @posts = Category.find(params[:category_id]).posts.where(status_id:1).order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = "open"
@@ -19,12 +18,6 @@ class PostsController < ApplicationController
       @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
       @status = ""
     end
-    # if params[:q] == nil
-    #   @q = Post.search(category_id:params[:category_id])
-    # else
-    #   @q = Post.search(search_params.merge(category_id:params[:category_id]))
-    # end
-    # @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
 
   end
 
@@ -121,7 +114,6 @@ class PostsController < ApplicationController
   end
 
   def add_more_images(new_images)
-    # binding.pry
     images = @post.images 
     images += new_images
     @post.images = images
@@ -133,7 +125,6 @@ class PostsController < ApplicationController
   end
 
   def remove_image_at_index
-    # binding.pry
     remain_images = @post.images.dup
     indexes = params[:box]
     if indexes == nil
@@ -143,7 +134,6 @@ class PostsController < ApplicationController
       remain_index = 0
       delete_count = 0
       @post.images.each do |image|
-        # binding.pry
         if index != indexes[remain_index].to_i
           remain_images.delete_at(index - delete_count) 
           delete_count += 1

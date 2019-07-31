@@ -10,7 +10,5 @@ $(document).on('turbolinks:load', function() {
       post.slideUp(800);
       page.slideUp(800);
     }
-    // post.fadeToggle(300)
-    // page.fadeToggle(300)
   });
 });

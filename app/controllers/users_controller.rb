@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   before_action :find_favorites, only:[:show],if: :user_signed_in?
 
   def index
-    # @users = User.all.includes(:posts)
-    # @users = @users.page(params[:page]).per(12)
-    # binding.pry
     if params[:q] == nil
       @q = User.ransack(params[:q])
     else
@@ -29,15 +26,11 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
     cate = Category.where("name =?",params[:category_name])
-    # binding.pry
     @posts = @user.posts.order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
 
     if ((params[:search_status] != nil) && (params[:search_status] != "all")) || ((params[:category_name] != nil) && (params[:category_name] != "all"))
-      # binding.pry
       if ((params[:search_status] == nil) || (params[:search_status] == "all"))
-        # binding.pry
-        @posts = @user.posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
-        
+        @posts = @user.posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)   
       elsif (params[:category_name] == nil) || (params[:category_name] == "all")
         @posts = @user.posts.where("status_id=?",status).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
       else
@@ -53,11 +46,8 @@ class UsersController < ApplicationController
     cate = Category.where("name =?",params[:favo_category_name])
     @favorite_posts = @user.fav_posts.order("created_at DESC").includes(:user,:category,:status).page(params[:show_favo]).per(10)
     if ((params[:favo_search_status] != nil) && (params[:favo_search_status] != "all")) || ((params[:favo_category_name] != nil) && (params[:favo_category_name] != "all"))
-      # binding.pry
       if ((params[:favo_search_status] == nil) || (params[:favo_search_status] == "all"))
-        # binding.pry
-        @favorite_posts = @user.fav_posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:user,:category,:status).page(params[:show_favo]).per(10)
-        
+        @favorite_posts = @user.fav_posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:user,:category,:status).page(params[:show_favo]).per(10)  
       elsif (params[:favo_category_name] == nil) || (params[:favo_category_name] == "all")
         @favorite_posts = @user.fav_posts.where("status_id =?",favo_status).order("created_at DESC").includes(:user,:category,:status).page(params[:show_favo]).per(10)
       else
@@ -68,8 +58,8 @@ class UsersController < ApplicationController
     @category = params[:category_name]
     @favo_status = params[:favo_search_status]
     @favo_category = params[:favo_category_name]
-    # @favorite_posts = @user.fav_posts.order("created_at DESC").includes(:user).page(params[:page]).per(10)
   end
+  
   private
   def search_params
     params.require(:q).permit!

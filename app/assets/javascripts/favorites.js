@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', function() {
     })
     .done(function(date){
       current_num = $('#favorites p').text();
-      // console.log(p)
       current_num = Number(current_num);
       current_num = current_num + 1
       $('#favorites p').text(current_num);

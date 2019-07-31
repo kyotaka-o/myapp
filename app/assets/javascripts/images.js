@@ -6,25 +6,41 @@ $(document).on('turbolinks:load', function() {
                  </div> `
     return html;
   }
-
   var files_array = [];
-  $("#post_images").change(function(e){
-    files = e.target.files[0];
-    files_array.push(files)
-    var index = files_array.length-1;
+  var total_index = 0;
+  function file_input(files,index) {
+    file = files[index];
+    files_array.push(file);
     var fileReader = new FileReader();
     // ファイルが読み込まれた際に、行う動作を定義する。
     fileReader.onload = function( event ) {
-    // 画像のurlを取得します。
-    var loadedImageUri = event.target.result;
-    // 取得したURLを利用して、ビューにHTMLを挿入する。
-    var html = buildHTML(loadedImageUri,index);
-    $("#post-images-view").append(html);
+      // 画像のurlを取得します。
+      var loadedImageUri = event.target.result;
+      console.log(event)
+      // var index = files_array.indexOf("ぶどう");
+      // 取得したURLを利用して、ビューにHTMLを挿入する。
+      var html = buildHTML(loadedImageUri,total_index);
+      total_index++;
+      $("#post-images-view").append(html);
+      if(files.length-1 > index){
+        index++;
+        console.log("in")
+        file_input(files,index)
+      }
+
     };
     // ファイルの読み込みを行う。
-    fileReader.readAsDataURL(files);
-  });
+    fileReader.readAsDataURL(file);
+  }
 
+
+  
+  $("#post_images").change(function(e){
+      // files = e.target.files[0];
+      // files_array.push(files);
+      var index = 0;
+      file_input(e.target.files,index)
+  });
   $('#form_box-form').on('submit', function(e){
     e.preventDefault();
 
@@ -36,9 +52,6 @@ $(document).on('turbolinks:load', function() {
     new_files_array.forEach(function(file){
       formData.append("image[images][]" , file)
      });
-    //  for(var item of formData){
-    //   console.log(item);
-    // }
     var url = $(this).attr('action')
     e.stopPropagation();
     $.ajax({
@@ -60,8 +73,7 @@ $(document).on('turbolinks:load', function() {
 
   $('#post-images-view').on('click', '.bottun-close',function(){
     var val = $(this).attr("data-add-img-num");
-    console.log(val)
-    files_array[0] = "";
+    files_array[val] = "";
     $(this).parent().remove();
   });
   $('#post-images-view').on('click', '.bottun-close-org',function(){

@@ -39,11 +39,9 @@ $(document).on('turbolinks:load', function() {
     setTimeout(footer, 1000);
   } 
   var top_theme = function(){
-    console.log(1)
     $('.top_theme').addClass("origin");
   } 
   var theme_all = function(){
-    // $('.cube_orgin .bottom').css("transition","5s all ease 0s");
     $('.cube_orgin').css("margin", "0 auto");
     cube_position_back();
 
@@ -62,8 +60,6 @@ $(document).on('turbolinks:load', function() {
   } 
 
   var cube_top = function(){
-    console.log(1)
-    // transition: 5s all ease 0s;
     $('.cube_orgin .bottom').css("transition","0.5s all ease 0s");
     $('.cube_orgin .top').css("transition","1.5s all ease 0s");
     $('.cube_orgin .front').css("transition","1.5s all ease 0s");
@@ -80,18 +76,14 @@ $(document).on('turbolinks:load', function() {
 
 
     $('.cube_orgin .left').css("left","100px");
-    // $('.cube_orgin .left').css("-webkit-transform","rotateY(90deg) translateZ(0px)");
 
     $('.cube_orgin .top').css("top","100px");
-    // $('.cube_orgin .top').css("left","0");
 
     $('.cube_orgin .bottom').css("bottom","100px");
 
     $('.cube_orgin .front').css("-webkit-transform","translateZ(100px)");
-    // $('.cube_orgin .front').css("top","0px");
 
     $('.cube_orgin .back').css("-webkit-transform","translateZ(-100px) rotateY(180deg)");
-    // $('.cube_orgin .back').css("top","0px");
 
 
     setTimeout(cube_top, 6000);
@@ -105,9 +97,6 @@ $(document).on('turbolinks:load', function() {
     $('.cube_orgin .top').addClass("cube_top");
     $('.cube_orgin .bottom').addClass("cube_bottom");
     cube_position();
-    // setTimeout(cube_position, 3000);
-
-
   } 
   setTimeout(cube_add, 1000);
 
