@@ -76,3 +76,4 @@ gem 'cancancan'
 gem 'ransack'
 
 gem 'fog-aws'
+gem 'impressionist'

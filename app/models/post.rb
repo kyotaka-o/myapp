@@ -10,4 +10,5 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :images,    length: { maximum: 5 }  
+  is_impressionable unique: :all
 end

@@ -119,6 +119,8 @@ GEM
       tilt
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.0)
     ipaddress (0.8.3)
     jbuilder (2.9.1)
@@ -297,6 +299,7 @@ DEPENDENCIES
   devise
   fog-aws
   font-awesome-sass (~> 5.4.1)
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17.0)

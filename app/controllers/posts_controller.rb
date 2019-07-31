@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :make_template, only:[:new]
   before_action :find_favorite, only:[:show],if: :user_signed_in?
   before_action :find_favorites, only:[:index,:search],if: :user_signed_in?
+  impressionist :actions=> [:show] ,unique: [:session_hash]
+
 
   def index
     @current_category = Category.find(params[:category_id])
@@ -48,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    impressionist(@post, nil, unique: [:session_hash])
     @comments = Post.find(params[:id]).comments.order("created_at ASC").includes(:user,:post)
     @comment = Comment.new
   end
