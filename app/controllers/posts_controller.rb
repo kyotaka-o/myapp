@@ -99,6 +99,7 @@ class PostsController < ApplicationController
     if params[:q] == nil
       @q = Post.ransack(params[:q])
     else
+      params[:q]['title_or_body_cont_any'] = params[:q]['title_or_body_cont_any'].split(/[\p{blank}\s]+/)
       @q = Post.ransack(search_params)
     end
     @posts = @q.result.includes(:user,:category,:status).order("created_at DESC").page(params[:page]).per(10)
