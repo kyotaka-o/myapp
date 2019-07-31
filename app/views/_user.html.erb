@@ -145,11 +145,30 @@
       </div> 
     </div>
     <div class="right cube-element" >
-      <div class="user-ranking">
+     <div class="user-ranking">
         <div class="user-ranking__title">
-          <p><%= icon('fas', 'star')%>工事中</p>
+          <p><%= icon('fas', 'eye')%>閲覧数ランキング</p>
         </div> 
+        <% i = 0 %>
         <div class="user-ranking__boxes">
+          <% @eye_ranking.each do |eye_post| %>
+            <%= link_to post_path(eye_post),method: :GET  do %>
+              <div class="user-ranking__box">
+                <div class="user-ranking__box__title truncate">
+                  <p>
+                    <%= "#{i+1}位：#{eye_post.title}" %>
+                  </p>
+                </div> 
+                <div class="user-ranking__box__num">
+                  <p>                    
+                    <p><%= icon('fas', 'eye')%><%="#{@eye_counts[i]}件" %>
+                  </p>
+                </div> 
+              </div> 
+            <% end %>
+            <% i += 1 %>
+
+          <% end %>
         </div> 
 
       </div> 

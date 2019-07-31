@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
     cate_ids= Post.group(:category_id).order('count_category_id DESC').limit(5).count(:category_id).keys
     @cate_ranking = cate_ids.map{|category_id| Category.find(category_id)}
     @cate_counts = cate_ids.map{|id| Post.where(category_id:id).count}
+    #閲覧数ランキング
+    eye_ids= Impression.group(:impressionable_id).order('count_impressionable_id DESC').limit(5).count(:impressionable_id).keys
+    @eye_ranking = eye_ids.map{|post_id| Post.find(post_id)}
+    @eye_counts = eye_ids.map{|id| Post.find(id).impressionist_count}
   end
 
   def find_favorites
