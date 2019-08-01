@@ -77,3 +77,4 @@ gem 'ransack'
 
 gem 'fog-aws'
 gem 'impressionist'
+gem 'bullet', :group => :development

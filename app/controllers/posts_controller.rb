@@ -9,13 +9,13 @@ class PostsController < ApplicationController
   def index
     @current_category = Category.find(params[:category_id])
     if params[:search_status] == "open"
-      @posts = Category.find(params[:category_id]).posts.where(status_id:1).order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.where(status_id:1).order("created_at DESC").includes(:user,:status).page(params[:page]).per(10)
       @status = "open"
     elsif params[:search_status] == "closed"
-      @posts = Category.find(params[:category_id]).posts.where(status_id:2).order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.where(status_id:2).order("created_at DESC").includes(:user,:status).page(params[:page]).per(10)
       @status = "closed"
     else
-      @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:category,:status).page(params[:page]).per(10)
+      @posts = Category.find(params[:category_id]).posts.order("created_at DESC").includes(:user,:status).page(params[:page]).per(10)
       @status = ""
     end
 

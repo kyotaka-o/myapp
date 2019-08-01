@@ -7,12 +7,11 @@ class UsersController < ApplicationController
     else
       @q = User.ransack(search_params)
     end
-    @users = @q.result.includes(:posts).page(params[:page]).per(12)
+    @users = @q.result.page(params[:page]).per(12)
 
   end
 
   def show
-
     categories = Category.all
     @category_names = []
     @category_names[0] = "all"
@@ -26,15 +25,15 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
     cate = Category.where("name =?",params[:category_name])
-    @posts = @user.posts.order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
+    @posts = @user.posts.order("created_at DESC").includes(:category,:status).page(params[:show_user]).per(10)
 
     if ((params[:search_status] != nil) && (params[:search_status] != "all")) || ((params[:category_name] != nil) && (params[:category_name] != "all"))
       if ((params[:search_status] == nil) || (params[:search_status] == "all"))
-        @posts = @user.posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)   
+        @posts = @user.posts.where("category_id =?",cate.ids).order("created_at DESC").includes(:category,:status).page(params[:show_user]).per(10)   
       elsif (params[:category_name] == nil) || (params[:category_name] == "all")
-        @posts = @user.posts.where("status_id=?",status).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
+        @posts = @user.posts.where("status_id=?",status).order("created_at DESC").includes(:category,:status).page(params[:show_user]).per(10)
       else
-        @posts = @user.posts.where("category_id =? and status_id =?",cate.ids,status).order("created_at DESC").includes(:user,:category,:status).page(params[:show_user]).per(10)
+        @posts = @user.posts.where("category_id =? and status_id =?",cate.ids,status).order("created_at DESC").includes(:category,:status).page(params[:show_user]).per(10)
       end
     end
 
@@ -59,7 +58,7 @@ class UsersController < ApplicationController
     @favo_status = params[:favo_search_status]
     @favo_category = params[:favo_category_name]
   end
-  
+
   private
   def search_params
     params.require(:q).permit!
