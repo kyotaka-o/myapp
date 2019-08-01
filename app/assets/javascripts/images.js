@@ -16,8 +16,6 @@ $(document).on('turbolinks:load', function() {
     fileReader.onload = function( event ) {
       // 画像のurlを取得します。
       var loadedImageUri = event.target.result;
-      console.log(event)
-      // var index = files_array.indexOf("ぶどう");
       // 取得したURLを利用して、ビューにHTMLを挿入する。
       var html = buildHTML(loadedImageUri,total_index);
       total_index++;
@@ -36,17 +34,14 @@ $(document).on('turbolinks:load', function() {
 
   
   $("#post_images").change(function(e){
-      // files = e.target.files[0];
-      // files_array.push(files);
       var index = 0;
       file_input(e.target.files,index)
   });
   $('#form_box-form').on('submit', function(e){
     e.preventDefault();
 
-
     var new_files_array = files_array.filter(function(e) { return e; });
-    console.log(new_files_array)
+
     var formData = new FormData(this);
 
     new_files_array.forEach(function(file){
@@ -63,7 +58,6 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(date){
-        console.log(date)
         window.location.href = `/posts/${date.id}`; 
     }) 
     .fail(function(){

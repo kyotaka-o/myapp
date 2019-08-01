@@ -1,12 +1,8 @@
 .fa{
   font-size: 30px ;
 }
-.user-toggle{
-  // visibility: hidden;
-}
-.user{
-  // opacity: 0;
 
+.user{
   width: 90%;
   @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
   margin: 10px auto;
@@ -15,13 +11,11 @@
   color: white;
   &__avater{
     visibility: visible;
-    // opacity: 0.9;
     margin: 10px auto;
     @include ele-size(150px,150px);
     @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),75px);
     color: $borderGrayColor;
     line-height: 150px;
-    // background-color: rgba(255, 255, 255,1.0);
     background-color: white;
     &__image{
       @include ele-size(150px,150px);
@@ -95,24 +89,15 @@
 .user-ranking-button{
   text-align: center;
   margin: 10px auto 0;
-  // padding:10px;
   color: #ffc402;
-
-  // background-color: $mainBlueColor;
   & .fas{
-    // background-color: $mainBlueColor;
     cursor: pointer;
     font-size: 2.5vw;
-    // @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),100px);
-
   }
   & :hover{
     color:$hoverGreenColor;
     opacity: 0.8;
-
   }
-
-
 }
 
 
@@ -136,17 +121,10 @@
   display:block;
   margin: 10px 30px;
 }
-// .ranking-title{
-//   text-align: center;
-//   color: aliceblue;
 
-// }
 .user-ranking{
-  // display: none;
   width: 100%;
-  // @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),10px);
   margin: 0px auto 5px;
-  // background-color: $mainBlueColor;
   color: aliceblue;
   padding: 10px;
   &__title{
@@ -164,7 +142,6 @@
     background-color: white;
     margin: 10px auto;
     text-align: center;
-    // overflow: scroll;
     & .fas{
       font-size: 10px;
     }
@@ -174,8 +151,6 @@
     &:hover{
       background-color:$hoverGreenColor;
     }
-
-
   }
 }
 div.ranking-stage{
@@ -188,22 +163,14 @@ div.ranking-stage{
       margin: 0 auto;
       -webkit-transform-style:preserve-3d;
       -webkit-transition:all 1s;
-      // animation: cuberotator 180s infinite alternate;
-      // &:active{
-      //   -webkit-transform: rotateY(-90deg);
-      // }
       div.cube-element{
           @include ele-size(200px,250px);
-          // border: 1px solid $borderGrayColor;
           @include border-info((2px solid $borderGrayColor),(0px 0px 0px gray),5px);
           box-sizing: border-box;
           text-align: center;
-          // line-height: 100px;
           position: absolute;
-          // background-color: rgba(175, 247, 213, 0.5);
           background-color: $mainBlueColor;
-          font-size: 10px;
-          
+          font-size: 10px;   
       }
       div.front{
           top: 0;

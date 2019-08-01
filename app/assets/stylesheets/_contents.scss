@@ -23,33 +23,15 @@ body,html{
   margin-right: 10px;
 }
 a{
-  // color: $borderGrayColor;
   &:hover{
     color: #039be5;
   }
-
 }
 .transform{
-  // background: rgba(255,255,255,0.9);
-  // padding: 20px;
   @include ele-size(100%,100px);
 }
-.fixed{
-  // position: fixed;
-  // top: 0;
 
-}
-.logo{
-  // padding-top:80px;
-  // display: flex;
-
-}
 .theme{
-  // position: fixed;
-  // transition: .5s;
-  // position: -webkit-sticky;
-  // position: sticky;
-  // top: 0;
   @include ele-size(100%,300px);
   background: url(bg.jpg), linear-gradient(to bottom, rgb(166, 217, 0) 0%, rgb(255, 68, 84) 100%);
   opacity: 0.7;
@@ -69,8 +51,6 @@ a{
   background-color: #464646;
 
   font-family: 'Press Start 2P', cursive;
-
-  // font-family: 'Barriecito', cursive;
   & p{
     color: black;
     padding-top:10px;
@@ -161,7 +141,6 @@ div.stage{
 }
 .contents{
   width: 100%;
-  // padding-top:300px;
   &__left{
     float: left;
     width: 20%;
@@ -174,7 +153,6 @@ div.stage{
     margin: 10px 0;
     float: left;
     width: 60%;
-    // z-index: 9999;
   }
   
   &__right{

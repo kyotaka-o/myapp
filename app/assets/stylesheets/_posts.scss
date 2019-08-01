@@ -3,7 +3,6 @@
   .fa{
     font-size: 20px;
   }
-
   .post{
     margin: 30px auto;
     @include ele-size(95%,120px);
@@ -12,7 +11,6 @@
       @include ele-size(120px,100%);
       display: inline-block;
       text-align: center;
-      // @include border-info((1px solid $borderGrayColor),(2px 2px 2px gray),);
       float: left;
       background-color: $mainBlueColor;
       color: aliceblue;
@@ -46,8 +44,7 @@
         padding: 5px 10px;
         @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
         &__time{
-          display: inline-block;
-          
+          display: inline-block;  
         }
         &__name{
           display: inline-block;
@@ -69,7 +66,6 @@
           float: right;
           width: 70px;
           opacity: 0.8;
-          // margin-right: 10px;
           & p{
             display: inline;
           }
@@ -80,14 +76,12 @@
           float: right;
           width: 70px;
           opacity: 0.8;
-          // margin-right: 10px;
         }
         &__category{
           display: inline-block;
           float: right;
           padding: 0 10px;
           @include border-info((1px solid $borderGrayColor),(1px 1px 1px gray),);
-          // margin-right:10px;
         }
       }
     }
@@ -107,7 +101,6 @@
       margin: 0 auto 30px;
       padding: 10px;
       min-height: 300px;
-      // color:$borderGrayC olor;
       background-color: white;
       @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
       &__images{

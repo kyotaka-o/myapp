@@ -4,7 +4,6 @@
   @include border-info((2px solid $borderGrayColor),(4px 4px 4px gray),);
   margin: 0 auto 30px;
   &__input{
-    // padding: 10px;
     border-bottom: 1px solid $borderGrayColor;
     margin: 30px;
 
@@ -43,7 +42,6 @@
       &:hover{
         color: #039be5;
       }
-
     }
     & .fa{
       font-size: 20px;
@@ -55,7 +53,6 @@
 .balloon5 {
   width: 100%;
   margin: 1.5em 0;
-  // overflow: hidden;
   padding: 20px;
 }
 
@@ -70,7 +67,6 @@
   margin-right: -105px;
   width: 80px;
   height: 80px;
-  // display: inline-block;
 }
 
 .balloon5 .faceicon img{
@@ -150,7 +146,6 @@
   position: absolute;
   top: 18px;
   right: -24px;
-  // margin-top: -15px;
   border: 12px solid transparent;
   border-left: 12px solid #fed7fc;
   z-index: 0;

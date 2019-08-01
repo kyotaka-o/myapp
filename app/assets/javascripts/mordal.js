@@ -26,7 +26,6 @@ $(document).on('turbolinks:load', function() {
 
     //[#modal-content]のCSSに[top]の値(pxtop)を設定
     $("#modal-content").css({"top": pxtop + "px"});
-
   }
   function mordal_close(){
     //[#modal-overlay]、または[#modal-close]をクリックしたら起こる処理
@@ -36,7 +35,6 @@ $(document).on('turbolinks:load', function() {
       $("#modal-overlay").remove();
       $("#modal-content").remove();
     });
-
   }
 
   $(".mordal-image").click(
@@ -60,17 +58,12 @@ $(document).on('turbolinks:load', function() {
       //[$modal-content]をフェードインさせる
       $("#modal-content").fadeIn("slow");
       centeringModalSyncer();
-
-
-
     }
   );
   $("#modal-close").unbind().click(function(){
     mordal_close();
-  
   });
   $('body').on('click','#modal-overlay',function(e){
     mordal_close();
   });
-
 });
