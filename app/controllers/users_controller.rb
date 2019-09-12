@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @favo_status = params[:favo_search_status]
     @favo_category = params[:favo_category_name]
   end
-
+  
   private
   def search_params
     params.require(:q).permit!

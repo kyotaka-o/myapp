@@ -22,7 +22,6 @@ $(document).on('turbolinks:load', function() {
       $("#post-images-view").append(html);
       if(files.length-1 > index){
         index++;
-        console.log("in")
         file_input(files,index)
       }
 
