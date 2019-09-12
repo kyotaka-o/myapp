@@ -49,34 +49,40 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @new_post = Post.new
+    if @post.user_id == current_user.id 
+      @new_post = Post.new
+    else
+      redirect_to categories_path
+    end
   end
 
   def update
-    if @post.images != nil
-      remove_image_at_index
-    end
-
-    if @post.video != nil
-      if params[:current_video] == nil
-        remove_video
+    if @post.user_id == current_user.id 
+      if @post.images != nil
+        remove_image_at_index
       end
-    end   
 
-    update_params = post_params
+      if @post.video != nil
+        if params[:current_video] == nil
+          remove_video
+        end
+      end   
 
-    if params[:image] != nil
-      add_more_images(image_params[:images])
-      update_params[:images] = @post.images
-    end
+      update_params = post_params
 
-    if @post.update(update_params)
-      respond_to do |format|
-        format.html {redirect_to post_path(params[:id])} 
-        format.json 
+      if params[:image] != nil
+        add_more_images(image_params[:images])
+        update_params[:images] = @post.images
       end
-    else
-      render :edit
+
+      if @post.update(update_params)
+        respond_to do |format|
+          format.html {redirect_to post_path(params[:id])} 
+          format.json 
+        end
+      else
+        render :edit
+      end
     end
   end
 
