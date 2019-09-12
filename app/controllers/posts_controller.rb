@@ -22,12 +22,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-    
+    if !user_signed_in?
+      redirect_to categories_path
+    end
+    @post = Post.new 
   end
 
   def create
-    
+    if !user_signed_in?
+      redirect_to categories_path
+    end
     @post = Post.new(post_params)
     if params[:image] != nil
       add_more_images(image_params[:images])
@@ -49,8 +53,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    if @post.user_id == current_user.id 
-      @new_post = Post.new
+    if user_signed_in?
+      if @post.user_id == current_user.id 
+        @new_post = Post.new
+      else
+        redirect_to categories_path
+      end
     else
       redirect_to categories_path
     end
